@@ -17,3 +17,36 @@
   outline: .1rem solid white;
   height: max-content;
 }
+
+#slide img {
+  position: absolute;
+}
+
+.slide-img {
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+.show {
+  opacity: 1;
+}
+
+#cta-home {
+  border: .2rem solid rgb(85, 0, 85);
+  transition-duration: .5s;
+  box-shadow: 0 0 2rem rgba(255, 0, 238, 0.5);
+}
+
+#cta-home:hover {
+  border: .2rem solid rgb(73, 0, 128);
+  background-color: rgb(255, 0, 238);
+  box-shadow: none;
+}
+
+#arrow-cta-home {
+  transition-duration: .5s;
+}
+
+#cta-home:hover>svg#arrow-cta-home {
+  opacity: 100%;
+}
