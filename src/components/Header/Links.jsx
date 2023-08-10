@@ -1,6 +1,12 @@
-const Links = ({title, to}) => {
+import { Link as Anchor } from 'react-router-dom';
+
+const Links = ({ title, to }) => {
   return (
-    <button className="navbar-links" href={to}>{title}</button>
+    <li>
+      <Anchor className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75" to={to}>
+        {title}
+      </Anchor>
+    </li>
   )
 }
 
