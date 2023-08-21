@@ -1,0 +1,134 @@
+{
+    "cities": [
+        {
+            "name": "Paris",
+            "country": "France",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/1200px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg",
+            "description": "The city of love and lights, where history blends with fashion and culture.",
+            "language": "French",
+            "currency": "Euro"
+        },
+        {
+            "name": "Tokyo",
+            "country": "Japan",
+            "image": "https://cdn.cheapoguides.com/wp-content/uploads/sites/2/2020/05/akihabara-iStock-484915982-1024x683.jpg",
+            "description": "A futuristic metropolis that combines millennia-old traditions with cutting-edge technology.",
+            "language": "Japanese",
+            "currency": "Yen"
+        },
+        {
+            "name": "New York",
+            "country": "United States",
+            "image": "https://hips.hearstapps.com/hmg-prod/images/gettyimages-688899881-1519413300.jpg?resize=1200:*",
+            "description": "The city that never sleeps, filled with skyscrapers, diverse culture, and endless opportunities.",
+            "language": "English",
+            "currency": "US Dollar"
+        },
+        {
+            "name": "Rome",
+            "country": "Italy",
+            "image": "https://www.thediaryofanomad.com/wp-content/uploads/2020/11/rome-for-3-days-in-rome-itinerary-vatican-dome-view.jpg",
+            "description": "The cradle of the Roman Empire and home to exquisite architecture and cuisine.",
+            "language": "Italian",
+            "currency": "Euro"
+        },
+        {
+            "name": "Rio de Janeiro",
+            "country": "Brazil",
+            "image": "https://media1.travelguide.de/media/2021/12/rio-1.jpeg",
+            "description": "Breathtaking beaches, vibrant carnival, and infectious energy at every corner.",
+            "language": "Portuguese",
+            "currency": "Brazilian Real"
+        },
+        {
+            "name": "Sydney",
+            "country": "Australia",
+            "image": "https://media.tatler.com/photos/6141d37b9ce9874a3e40107d/16:9/w_2560%2Cc_limit/social_crop_sydney_opera_house_gettyimages-869714270.jpg",
+            "description": "The gateway to Australia, featuring the iconic Opera House and a relaxed coastal lifestyle.",
+            "language": "English",
+            "currency": "Australian Dollar"
+        },
+        {
+            "name": "Istanbul",
+            "country": "Turkey",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Bosphorus_Bridge_%28235499411%29.jpeg",
+            "description": "A transcontinental city bridging Europe and Asia, brimming with history and architectural wonders.",
+            "language": "Turkish",
+            "currency": "Turkish Lira"
+        },
+        {
+            "name": "Mexico City",
+            "country": "Mexico",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Sobrevuelos_CDMX_HJ2A4913_%2825514321687%29_%28cropped%29.jpg/1200px-Sobrevuelos_CDMX_HJ2A4913_%2825514321687%29_%28cropped%29.jpg",
+            "description": "A colorful and chaotic metropolis, where tradition meets modernity.",
+            "language": "Spanish",
+            "currency": "Mexican Peso"
+        },
+        {
+            "name": "Bangkok",
+            "country": "Thailand",
+            "image": "https://a.cdn-hotels.com/gdcs/production172/d459/3af9262b-3d8b-40c6-b61d-e37ae1aa90aa.jpg",
+            "description": "The cultural and commercial heart of Thailand, where temples shine alongside skyscrapers.",
+            "language": "Thai",
+            "currency": "Thai Baht"
+        },
+        {
+            "name": "London",
+            "country": "United Kingdom",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/6/67/London_Skyline_%28125508655%29.jpeg",
+            "description": "An iconic city with rich history, home to royalty and a vibrant art scene.",
+            "language": "English",
+            "currency": "British Pound"
+        },
+        {
+            "name": "Cairo",
+            "country": "Egypt",
+            "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/09/18/16/cairo-main.jpg",
+            "description": "The land of pyramids and pharaohs, where ancient Egypt comes to life.",
+            "language": "Arabic",
+            "currency": "Egyptian Pound"
+        },
+        {
+            "name": "Seoul",
+            "country": "South Korea",
+            "image": "https://media.cnn.com/api/v1/images/stellar/prod/160621115931-seoul-after.jpg?q=w_4222,h_2818,x_0,y_0,c_fill",
+            "description": "A modern, tech-savvy city that still holds onto its cultural roots and traditions.",
+            "language": "Korean",
+            "currency": "South Korean Won"
+        },
+        {
+            "name": "Vienna",
+            "country": "Austria",
+            "image": "https://i.guim.co.uk/img/media/44907381ba02489d60c01ed449fbbef4f82c9bd4/0_579_8688_5213/master/8688.jpg?width=1200&quality=85&auto=format&fit=max&s=5d57831bfe1d69bb81a6057cbb2ce009",
+            "description": "The birthplace of classical music and imperial elegance, where art and culture flourish.",
+            "language": "German",
+            "currency": "Euro"
+        },
+        {
+            "name": "Moscow",
+            "country": "Russia",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/8/85/Saint_Basil%27s_Cathedral_and_the_Red_Square.jpg",
+            "description": "The Russian capital with its iconic golden domes and a history spanning centuries.",
+            "language": "Russian",
+            "currency": "Russian Ruble"
+        },
+        {
+            "name": "Cape Town",
+            "country": "South Africa",
+            "image": "https://cdn.britannica.com/42/126842-050-0803BC41/Sea-Point-Cape-Town-SAf.jpg",
+            "description": "A stunning city with a unique blend of beaches, mountains, and diverse culture.",
+            "language": "Afrikaans, English",
+            "currency": "South African Rand"
+        }
+    ],
+    "users": [
+        {
+            "_id": 1,
+            "name": "Valentino"
+        },
+        {
+            "_id": 2,
+            "name": "Pablito"
+        }
+    ]
+}
