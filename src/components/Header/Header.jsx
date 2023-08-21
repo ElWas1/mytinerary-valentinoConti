@@ -62,7 +62,7 @@ const Navbar = ({ button }) => {
                     <li key={e.id}>
                       {
                         showDropdown
-                          ? <Card className="rounded-none bottom-0 left-[100vw/1.5] right-0 top-16 absolute h-[calc(100vh-4.4rem)] w-fit max-w-[20rem] shadow-xl shadow-blue-gray-900/5 bg-gray-600">
+                          ? <Card className="text-white rounded-none bottom-0 left-[100vw/1.5] right-0 top-16 absolute h-[calc(100vh-4.4rem)] w-fit max-w-[20rem] shadow-xl shadow-blue-gray-900/5 bg-gray-600">
                             <div className="mb-2 flex items-center gap-4 p-4">
                               <img src="/suitcase.png" alt="brand" className="h-8 w-8" />
                               <Typography variant="h5" color="blue-gray">

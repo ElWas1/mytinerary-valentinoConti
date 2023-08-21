@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import Cards from "../Cards/Cards.jsx";
+import CarouselCities from "../CarouselCities/CarouselCities.jsx";
 
 const PopularMyTineraries = () => {
 
@@ -7,13 +7,6 @@ const PopularMyTineraries = () => {
 
     const [index, setIndex] = useState(0)
     const [intervalId, setIntervalId] = useState(0)
-    const [card, setCard] = useState({})
-    const [cards, setCards] = useState([])
-
-    useEffect(() => {
-        setCards(divImages)
-    }, []
-    )
 
     useEffect(() => {
         if (intervalId != null) {
@@ -25,7 +18,6 @@ const PopularMyTineraries = () => {
 
     const slide = (i) => {
         setIndex(i)
-        setCard(cards[i])
         setIntervalId(null)
     }
 
@@ -51,19 +43,18 @@ const PopularMyTineraries = () => {
             i = 0
         }
         setIndex(i)
-        setCard(cards[i])
     }
 
     const divImages = [
         {
             image1: "https://www.civitatis.com/blog/wp-content/uploads/2016/05/Estatua-de-la-Libertad.jpg", city1: "New York", country1: "USA",
-            image2: "https://media.admagazine.com/photos/618a5ef1a8ad6c5249a74d1d/4:3/w_2000,h_1500,c_limit/91683.jpg", city2: "Tokio", country2: "Japan",
+            image2: "https://media.admagazine.com/photos/618a5ef1a8ad6c5249a74d1d/4:3/w_2000,h_1500,c_limit/91683.jpg", city2: "Tokyo", country2: "Japan",
             image3: "https://www.universal-assistance.com/uablog/wp-content/uploads/2022/12/big-ben.png", city3: "London", country3: "UK",
             image4: "https://encolombia.com/wp-content/uploads/2021/02/Geografia-de-Hong-Kong.jpg", city4: "Hong Kong", country4: "China"
         },
         {
             image1: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/1200px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg", city1: "Paris", country1: "France",
-            image2: "https://metropoliabierta.elespanol.com/uploads/s1/20/20/19/4/sagradafamilia.jpeg", city2: "Barcelona", country2: "Spain",
+            image2: "https://apiimg.iberostar.com/uploads/image/36014/crops/16:9/720/image.jpeg", city2: "Barcelona", country2: "Spain",
             image3: "https://revistavelvet.cl/wp-content/uploads/2022/05/dubai-1.jpeg", city3: "Dubai", country3: "Arab Emirates",
             image4: "https://upload.wikimedia.org/wikipedia/commons/0/00/ObeliscoBA2015.2.jpg", city4: "Buenos Aires", country4: "Argentina"
         },
@@ -81,10 +72,10 @@ const PopularMyTineraries = () => {
             <h1 className="max-sm:text-xl text-4xl md:mb-4">Popular MyTineraries</h1>
             <p className="max-md:pb-2 md:pb-4">Autoslide is turned {intervalId ? "on" : "off"}</p>
             <div id="carousel-page-1" className="flex flex-wrap md:gap-2 max-md:gap-1 justify-evenly">
-                <Cards className={carouselItemsClass} image={divImages[index].image1} city={divImages[index].city1} country={divImages[index].country1} />
-                <Cards className={carouselItemsClass} image={divImages[index].image2} city={divImages[index].city2} country={divImages[index].country2} />
-                <Cards className={carouselItemsClass} image={divImages[index].image3} city={divImages[index].city3} country={divImages[index].country3} />
-                <Cards className={carouselItemsClass} image={divImages[index].image4} city={divImages[index].city4} country={divImages[index].country4} />
+                <CarouselCities className={carouselItemsClass} image={divImages[index].image1} city={divImages[index].city1} country={divImages[index].country1} />
+                <CarouselCities className={carouselItemsClass} image={divImages[index].image2} city={divImages[index].city2} country={divImages[index].country2} />
+                <CarouselCities className={carouselItemsClass} image={divImages[index].image3} city={divImages[index].city3} country={divImages[index].country3} />
+                <CarouselCities className={carouselItemsClass} image={divImages[index].image4} city={divImages[index].city4} country={divImages[index].country4} />
             </div>
             <button className="max-md:m-4 md:m-2 bg-purple-800 hover:bg-red-500 duration-500 rounded-xl p-2" onClick={prevSlide}>Prev</button>
             <button className="max-md:m-4 md:m-2 bg-purple-800 hover:bg-green-700 duration-500 rounded-xl p-2" onClick={nextSlide}>Next</button>
