@@ -80,7 +80,7 @@ const Navbar = ({ button }) => {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                   </svg>
                                 </ListItemPrefix>
-                                <Anchor className='block w-full' to='#'>Login</Anchor>
+                                <Anchor className='block w-full' to='/signin'>Login</Anchor>
                               </ListItem>
                               <hr className="my-2 border-blue-gray-50" />
                               MyTinerary 2023
