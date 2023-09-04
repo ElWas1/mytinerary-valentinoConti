@@ -5,6 +5,7 @@ import Cities from '../pages/Cities.jsx';
 import Main from '../layouts/Main.jsx';
 import NoBackground from "../layouts/NoBackground.jsx";
 import CityDetails from "../pages/CityDetails.jsx";
+import SignIn from "../pages/SignIn.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,14 @@ const router = createBrowserRouter([
     children: [
       { path: '/cities', element: <Cities /> },
       { path: '/cities/:id', element: <CityDetails /> }
+    ],
+    errorElement: <ErrorPage />
+  },
+  {
+    path: '/signin',
+    element: <NoBackground />,
+    children: [
+      { path: '/signin', element: <SignIn /> }
     ],
     errorElement: <ErrorPage />
   }
