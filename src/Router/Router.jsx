@@ -5,7 +5,8 @@ import Cities from '../pages/Cities.jsx';
 import Main from '../layouts/Main.jsx';
 import NoBackground from "../layouts/NoBackground.jsx";
 import CityDetails from "../pages/CityDetails.jsx";
-import SignIn from "../pages/SignIn.jsx";
+import Sign from "../pages/Sign.jsx";
+import ProtectedRoute from './ProtectedRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,10 +27,10 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />
   },
   {
-    path: '/signin',
+    path: '/sign',
     element: <NoBackground />,
     children: [
-      { path: '/signin', element: <SignIn /> }
+      { path: '/sign', element: (<ProtectedRoute path='/'><Sign /></ProtectedRoute>) }
     ],
     errorElement: <ErrorPage />
   }

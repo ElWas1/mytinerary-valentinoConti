@@ -4,10 +4,12 @@ import Activities from '../Activities/Activities';
 import Heart from "react-heart";
 // import { click_heart } from '../../store/actions/likeActions';
 import ItineraryPrice from '../ItineraryPrice/ItineraryPrice';
+import Comments from '../Comments/Comments.jsx';
+import Swal from 'sweetalert2';
 
 const Itinerary = ({
-    title, userPhoto, userName, price, duration, activities,
-    hashtags, likes, activityPhoto, activityDescription }) => {
+    id, userId, title, userPhoto, userName, price, duration, activities,
+    hashtags, likes }) => {
 
     const hideableDiv = useRef(null);
     const hideDivButton = useRef(null);
@@ -23,6 +25,14 @@ const Itinerary = ({
     //     dispatch(click_heart(e))
     // }
 
+    const handleDisabledLikeButton = () => {
+        Swal.fire(
+            'Action not allowed.',
+            'Please, Log In to like itineraries and post comments.',
+            'error'
+        )
+    }
+
     const handleHideableDiv = () => {
         if (hideableDiv.current.className === 'hidden') {
             hideableDiv.current.className = 'flex flex-col flex-wrap'
@@ -34,7 +44,7 @@ const Itinerary = ({
     }
 
     return (
-        <div className="flex flex-col flex-wrap min-w-[80vw] bg-black rounded-xl gap-4 p-4 mb-4">
+        <div className="flex flex-col flex-wrap min-w-[80vw] max-md:max-w-[80vw] bg-black rounded-xl gap-4 md:p-4 mb-4">
             <h1 className='mt-4 self-center max-md:text-3xl md:text-4xl'>{title}</h1>
             <div className="flex flex-wrap justify-evenly items-center gap-4 p-4">
                 <div className='flex flex-row gap-4'>
@@ -46,7 +56,7 @@ const Itinerary = ({
                 </div>
                 <div className='flex flex-col flex-wrap items-center gap-4'>
                     <h3>{hashtags.map((e) => e + ' ')}</h3>
-                    <Heart className='w-6 h-6' isActive={liked} onClick={() => setLiked(!liked)} inactiveColor="white" animationTrigger="hover" animationScale={1.2} />
+                    {userId ? <Heart className='w-6 h-6' isActive={liked} onClick={() => setLiked(!liked)} inactiveColor="white" animationTrigger="hover" animationScale={1.2} /> : <Heart className='w-6 h-6' isActive={liked} onClick={handleDisabledLikeButton} inactiveColor="white" animationTrigger="hover" animationScale={1.2} /> }
                     <h4>{likes + ' Likes'}</h4>
                 </div>
                 <div className='flex flex-col flex-wrap gap-4'>
@@ -56,12 +66,11 @@ const Itinerary = ({
             </div>
             <div className="hidden" ref={hideableDiv}>
                 <div className="max-w-[75vw] self-center">
-                    {/* <h1 className="text-4xl">Activities</h1> */}
-                    <Activities />
+                    <Activities activitiesArray={activities} />
                 </div>
-                {/* <div className="self-center">
-                    <h1 className="text-4xl">Comments</h1>
-                </div> */}
+                <div className="self-center">
+                    <Comments itineraryId={id} userId={userId} />
+                </div>
             </div>
             <button className="bg-white text-black text-xl p-4 rounded-xl outline outline-black outline-2 hover:bg-black hover:text-white hover:outline-white duration-500" onClick={handleHideableDiv} ref={hideDivButton}>Show more</button>
         </div>
