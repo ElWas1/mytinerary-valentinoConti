@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getAllItineraries, getItinerariesByCityId } from '../../services/itineraryService.js';
+import axios from 'axios';
 
 export const get_itineraries = createAsyncThunk('get_itineraries', async (id) => {
     try {
@@ -18,6 +19,27 @@ export const get_itineraries_by_city_id = createAsyncThunk('get_itineraries_by_c
         return {
             itineraries: await getItinerariesByCityId(id)
         }
+    } catch {
+        return {
+            itineraries: []
+        }
+    }
+})
+
+export const get_comments = createAsyncThunk('get_comments', async (obj) => {
+    try {
+
+        const response = await axios.get(`http://localhost:8000/api/itineraries/comment/${obj}`)
+
+        return {
+            comments: response.data.commentsArray.map((e) => e.comment),
+            commentId: response.data.commentsArray.map((e) => e._id),
+            itineraryId: response.data.commentsArray.map((e) => e.id),
+            userName: response.data.commentsArray.map((e) => e.user.name),
+            userImage: response.data.commentsArray.map((e) => e.user.image),
+            commentAuthorId: response.data.commentsArray.map((e) => e.user._id),
+        }
+
     } catch {
         return {
             itineraries: []
