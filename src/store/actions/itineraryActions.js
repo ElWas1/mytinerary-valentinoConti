@@ -32,7 +32,7 @@ export const get_comments = createAsyncThunk('get_comments', async (obj) => {
         const response = await axios.get(`http://localhost:8000/api/itineraries/comment/${obj}`)
 
         return {
-            comments: response.data.commentsArray.map((e) => e.comment),
+            comments: response.data.commentsArray.map((e) => e),
             commentId: response.data.commentsArray.map((e) => e._id),
             itineraryId: response.data.commentsArray.map((e) => e.id),
             userName: response.data.commentsArray.map((e) => e.user.name),
@@ -42,7 +42,7 @@ export const get_comments = createAsyncThunk('get_comments', async (obj) => {
 
     } catch {
         return {
-            itineraries: []
+            comments: []
         }
     }
 })

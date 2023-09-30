@@ -46,7 +46,7 @@ const userReducer = createReducer(
                 user: action.payload.user
             }
         })
-        .addCase(post_comment, (state, action) => {
+        .addCase(post_comment.fulfilled, (state, action) => {
             return {
                 ...state,
                 comment: action.payload.comment

@@ -6,10 +6,18 @@ import Heart from "react-heart";
 import ItineraryPrice from '../ItineraryPrice/ItineraryPrice';
 import Comments from '../Comments/Comments.jsx';
 import Swal from 'sweetalert2';
+import { useEffect } from 'react';
+import { get_user_id } from '../../store/actions/userActions';
 
 const Itinerary = ({
-    id, userId, title, userPhoto, userName, price, duration, activities,
-    hashtags, likes }) => {
+    itineraryId, userId, title, userPhoto, userName, price, duration, activities,
+    hashtags, likes, update }) => {
+
+        const user = useSelector((store) => store.user.user?.email)
+
+        useEffect(() => {
+            dispatch(get_user_id(user))
+        }, [])
 
     const hideableDiv = useRef(null);
     const hideDivButton = useRef(null);
@@ -46,7 +54,7 @@ const Itinerary = ({
     return (
         <div className="flex flex-col flex-wrap min-w-[80vw] max-md:max-w-[80vw] bg-black rounded-xl gap-4 md:p-4 mb-4">
             <h1 className='mt-4 self-center max-md:text-3xl md:text-4xl'>{title}</h1>
-            <div className="flex flex-wrap justify-evenly items-center gap-4 p-4">
+            <div className="flex flex-wrap justify-evenly items-center gap-4 p-4 max-[450px]:mt-[-1rem]">
                 <div className='flex flex-row gap-4'>
                     <h3 className='text-2xl'>{'Price: '}</h3>
                     <ItineraryPrice price={price} />
@@ -60,7 +68,7 @@ const Itinerary = ({
                     <h4>{likes + ' Likes'}</h4>
                 </div>
                 <div className='flex flex-col flex-wrap gap-4'>
-                    <img className="rounded-xl max-md:w-[50vw] md:w-[25vw] max-h-[30vh] mb-4" src={userPhoto} alt={userName + "'s profile photo"} />
+                    <img className="max-[1439px]:self-center rounded-xl max-md:w-[50vw] md:w-[25vw] max-h-[30vh] mb-4" src={userPhoto} alt={userName + "'s profile photo"} />
                     <h2 className="self-center text-xl">{'Created by: ' + userName}</h2>
                 </div>
             </div>
@@ -69,7 +77,7 @@ const Itinerary = ({
                     <Activities activitiesArray={activities} />
                 </div>
                 <div className="self-center">
-                    <Comments itineraryId={id} userId={userId} />
+                    <Comments itineraryId={itineraryId} userId={userId} update={updatedValue => update(updatedValue)} />
                 </div>
             </div>
             <button className="bg-white text-black text-xl p-4 rounded-xl outline outline-black outline-2 hover:bg-black hover:text-white hover:outline-white duration-500" onClick={handleHideableDiv} ref={hideDivButton}>Show more</button>

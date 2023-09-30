@@ -1,6 +1,6 @@
 import { Link as Anchor, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { get_city_by_id } from '../store/actions/cityActions.js';
 import { get_itineraries_by_city_id } from '../store/actions/itineraryActions.js';
 import Itinerary from '../components/Itineraries/Itinerary.jsx';
@@ -14,6 +14,8 @@ const CityDetails = () => {
     const user = useSelector((store) => store.user.user?.email)
     const userId = useSelector((store) => store.user?.userId)
 
+    const [update, setUpdate] = useState(0)
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -24,7 +26,7 @@ const CityDetails = () => {
             query += 'cityId=' + id
             dispatch(get_itineraries_by_city_id(query))
         }
-    }, [dispatch])
+    }, [update, dispatch])
 
     return (
         <div className="flex flex-col items-center in-h-[calc(100vh/1.5)] bg-cover bg-fixed" style={{ "backgroundImage": `url(${city?.image})` }}>
@@ -44,8 +46,8 @@ const CityDetails = () => {
                     <h2>Description: <span className='text-gray-200 font-thin'>{city?.description}</span></h2>
                 </div>
                 <h1 className='my-8 text-5xl text-black font-bold bg-slate-500/60 p-4 rounded-xl sm:px-[20vw]'>Itineraries</h1>
-                {(itineraries.length > 0) ? itineraries?.map((e) => <Itinerary id={e._id} key={e._id} title={e.title} userId={userId} userPhoto={e.created_by.image} userName={e.created_by.name} price={e.price} duration={e.duration} activities={e.activities}
-                    hashtags={e.hashtags} likes={e.likes} />) : <h1 className="p-4 rounded-xl max-md:text-2xl max-lg:text-3xl lg:text-4xl block text-center text-red-900 hover:bg-red-500 hover:text-yellow-300 duration-500">There are no itineraries for this city, for now...</h1>}
+                {(itineraries.length > 0) ? itineraries?.map((e) => <Itinerary itineraryId={e._id} key={e._id} title={e.title} userId={userId} userPhoto={e.created_by.image} userName={e.created_by.name} price={e.price} duration={e.duration} activities={e.activities}
+                    hashtags={e.hashtags} likes={e.likes} cityId={id} update={updatedValue => setUpdate(updatedValue)} />) : <h1 className="backdrop-blur-sm p-4 rounded-xl max-md:text-2xl max-lg:text-3xl lg:text-4xl block text-center text-white hover:bg-red-500 hover:text-yellow-300 duration-500">There are no itineraries for this city, for now...</h1>}
             </div>
         </div>
     )
