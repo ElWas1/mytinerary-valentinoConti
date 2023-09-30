@@ -25,7 +25,7 @@ export const user_signin = createAsyncThunk(
                 'You are Logged In!',
                 `Welcome, ${data.response.user.name}!`,
                 'success'
-              )
+            )
 
             return {
                 user: data.response.user,
@@ -36,7 +36,7 @@ export const user_signin = createAsyncThunk(
             console.log(error);
             Swal.fire(
                 'You could not Sign In.',
-                'Please, check that the credentials you have provided.',
+                'Please, check the credentials that you have provided.',
                 'error'
             )
             return {
@@ -51,17 +51,15 @@ export const user_signup = createAsyncThunk(
     async (obj) => {
         try {
             const { data } = await axios.post('http://localhost:8000/api/auth/signup', obj.user)
-            localStorage.setItem('token', data.response.token)
-            localStorage.setItem('user', JSON.stringify(data.response.user))
 
             console.log(data);
             Swal.fire(
                 'You are registered.',
                 'Please, proceed to the Sign In page and Log In.',
                 'success'
-              )
+            )
             return {
-                user: data.response.user
+                message: data.message
             }
 
         } catch (error) {
@@ -121,7 +119,7 @@ export const user_google_auth = createAsyncThunk(
                 'You are Logged In!',
                 `Welcome, ${data.response.user.name}!`,
                 'success'
-              )
+            )
 
             return {
                 user: data.response.user,
@@ -137,23 +135,46 @@ export const user_google_auth = createAsyncThunk(
     }
 )
 
-export const post_comment = createAction(
+export const post_comment = createAsyncThunk(
     'post_comment',
-    (obj) => {
+    async (obj) => {
         try {
-            axios.post(`http://localhost:8000/api/itineraries/comment/${obj.id}`, {
+            const response = await axios.post(`http://localhost:8000/api/itineraries/comment/${obj.itineraryId}`, {
                 comment: obj.comment,
                 user: obj.userId,
-                id: obj.id
+                itineraryId: obj.itineraryId
             })
-            console.log(obj);
+
             return {
                 payload: {
-                    _id: obj.id,
+                    _id: obj._id,
                     comment: obj.comment,
-                    userId: obj.userId
+                    userId: obj.userId,
+                    itineraryId: obj.itineraryId
                 }
             }
+
+        } catch (error) {
+            console.log(error);
+            return null
+        }
+    }
+)
+
+export const delete_comment = createAsyncThunk(
+    'delete_comment',
+    async (obj) => {
+        try {
+            const response = await axios.delete(`http://localhost:8000/api/itineraries/comment/${obj}`)
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'info',
+                title: 'The comment has been deleted.',
+                showConfirmButton: false,
+                timer: 5000
+            })
+            return true
 
         } catch (error) {
             console.log(error);
@@ -174,7 +195,6 @@ export const get_user_id = createAsyncThunk(
             }
 
         } catch (error) {
-            console.log(error);
             return {
                 user: null
             }
@@ -187,7 +207,7 @@ export const get_countries = createAsyncThunk(
     async (obj) => {
         try {
             const data = await axios.get(`https://restcountries.com/v3.1/all?fields=name`)
-            
+
             return {
                 countriesList: (data.data).sort((a, b) => a.name.common.localeCompare(b.name.common))
             }
