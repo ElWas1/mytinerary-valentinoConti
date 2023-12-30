@@ -19,8 +19,6 @@ const Cities = () => {
     const addItineraryButton = useRef(null)
     const clearButton = useRef(null)
 
-    console.log(user);
-
     useEffect(() => {
         dispatch(get_cities())
     }, [dispatch]);
