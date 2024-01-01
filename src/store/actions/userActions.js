@@ -52,7 +52,6 @@ export const user_signup = createAsyncThunk(
         try {
             const { data } = await axios.post('http://localhost:8000/api/auth/signup', obj.user)
 
-            console.log(data);
             Swal.fire(
                 'You are registered.',
                 'Please, proceed to the Sign In page and Log In.',
@@ -83,6 +82,20 @@ export const user_token = createAction(
             payload: {
                 user
             }
+        }
+    }
+)
+
+export const user_renew_token = createAsyncThunk(
+    'user_renew_token',
+    async (obj) => {
+        try {
+            const configs = { headers: { 'Authorization': `Bearer ${obj}` } }
+            const { data } = await axios.post('http://localhost:8000/api/auth/checkTokenExpiration', null, configs)
+            console.log(data);
+            localStorage.setItem('token', data.response.token);
+        } catch (error) {
+            return null
         }
     }
 )
