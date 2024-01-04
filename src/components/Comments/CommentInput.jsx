@@ -58,7 +58,7 @@ const CommentInput = ({ itineraryId, userId, update }) => {
         <>
             <div ref={inputDiv} className="flex flex-row bg-black outline outline-1 outline-green-500 rounded-xl mt-16 w-full p-2">
                 {user ?
-                    <input disabled={false} ref={commentInputContent} className="bg-black w-full p-1 rounded-xl outline-none" name="comment" id="comment" type="text" placeholder="Post a comment..." />
+                    <input disabled={false} ref={commentInputContent} className="bg-black w-full p-1 rounded-xl outline-none" name="comment" id={itineraryId} type="text" placeholder="Post a comment..." />
                     : <input disabled={true} ref={commentInputContent} className="bg-black w-full p-1 rounded-xl outline-none" name="comment" type="text" placeholder="Sign In to post comments." />}
                 {user ? <button ref={postCommentButton} disabled={false} onClick={handlePostComment}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="self-center w-6 h-6">
