@@ -7,6 +7,7 @@ import NoBackground from "../layouts/NoBackground.jsx";
 import CityDetails from "../pages/CityDetails.jsx";
 import Sign from "../pages/Sign.jsx";
 import ProtectedRoute from './ProtectedRoute.jsx';
+import UserProfile from "../pages/UserProfile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
     element: <NoBackground />,
     children: [
       { path: '/sign', element: (<ProtectedRoute path='/'><Sign /></ProtectedRoute>) }
+    ],
+    errorElement: <ErrorPage />
+  },
+  {
+    path: '/user',
+    element: <NoBackground />,
+    children: [
+      { path: '/user/:username', element: <UserProfile /> }
     ],
     errorElement: <ErrorPage />
   }
