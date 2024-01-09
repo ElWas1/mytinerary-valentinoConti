@@ -1,6 +1,7 @@
 import { RouterProvider } from 'react-router-dom';
 import router from './Router/Router.jsx'
 import './App.css'
+import { app, analytics, storage } from '../config/firebaseConfig.js'
 
 import { useEffect } from 'react';
 import axios from 'axios';
