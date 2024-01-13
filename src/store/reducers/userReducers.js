@@ -1,26 +1,18 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { user_photo, user_signin, user_signup, user_token, user_google_auth, post_comment, get_user_id, get_countries } from '../actions/userActions.js';
+import { user_signin, user_signup, user_token, user_google_auth, post_comment, get_user_id, get_countries, get_user_by_username } from '../actions/userActions.js';
 
 const initialState = {
-    image: '',
     user: null,
     token: null,
     comment: '',
-    comments: [],
     userId: null,
-    userName: [],
-    countriesList: []
+    countriesList: [],
+    visitedUser: {}
 }
 
 const userReducer = createReducer(
     initialState,
     (builder) => builder
-        .addCase(user_photo, (state, action) => {
-            return {
-                ...state,
-                photo: action.payload.image
-            }
-        })
         .addCase(user_signin.fulfilled, (state, action) => {
             return {
                 ...state,
@@ -62,6 +54,12 @@ const userReducer = createReducer(
             return {
                 ...state,
                 countriesList: action.payload.countriesList
+            }
+        })
+        .addCase(get_user_by_username.fulfilled, (state, action) => {
+            return {
+                ...state,
+                visitedUser: action.payload.user
             }
         })
 )
