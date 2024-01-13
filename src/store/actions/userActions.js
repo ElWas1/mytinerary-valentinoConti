@@ -2,17 +2,6 @@ import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-export const user_photo = createAction(
-    'user_photo',
-    (obj) => {
-        return {
-            payload: {
-                photo: obj.photo
-            }
-        }
-    }
-)
-
 export const user_signin = createAsyncThunk(
     'user_signin',
     async (obj) => {
@@ -178,7 +167,7 @@ export const delete_comment = createAsyncThunk(
     'delete_comment',
     async (obj) => {
         try {
-            const response = await axios.delete(`http://localhost:8000/api/itineraries/comment/${obj}`)
+            await axios.delete(`http://localhost:8000/api/itineraries/comment/${obj}`)
 
             Swal.fire({
                 position: 'top-end',
@@ -225,6 +214,26 @@ export const get_countries = createAsyncThunk(
                 countriesList: (data.data).sort((a, b) => a.name.common.localeCompare(b.name.common))
             }
 
+        } catch (error) {
+            console.log(error);
+            return {
+                user: null
+            }
+        }
+    }
+)
+
+export const get_user_by_username = createAsyncThunk(
+    'get_user_by_username',
+    async (obj) => {
+        try {
+            const { data } = await axios.get(`http://localhost:8000/api/users?username=${obj}`)
+
+            console.log(data);
+
+            return {
+                user: data.users[0]
+            }
         } catch (error) {
             console.log(error);
             return {

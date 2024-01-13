@@ -13,6 +13,7 @@ const SignUp = () => {
   const [formData, setFormData] = useState({
     name: '',
     last_name: '',
+    username: '',
     email: '',
     pass: '',
     image: '',
@@ -34,7 +35,6 @@ const SignUp = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    console.log('Sign Up');
     try {
       dispatch(user_signup({
         user: formData
@@ -51,6 +51,7 @@ const SignUp = () => {
       <form className="flex flex-col gap-4 max-w-[90vw]" onSubmit={handleSignUp} action="">
         <input className={inputClassName} autoComplete="off" placeholder="Name" onInput={handleInput} type="text" name='name' />
         <input className={inputClassName} autoComplete="off" placeholder="Last name" onInput={handleInput} type="text" name='last_name' />
+        <input className={inputClassName} autoComplete="off" placeholder="Username" onInput={handleInput} type="text" name='username' />
         <input className={inputClassName} autoComplete="off" placeholder="E-mail" onInput={handleInput} type="text" name='email' />
         <input className={inputClassName} autoComplete="off" placeholder="Password" onInput={handleInput} type="text" name='pass' />
         <input className={inputClassName} autoComplete="off" placeholder="Profile photo" onInput={handleInput} type="text" name='image' />
