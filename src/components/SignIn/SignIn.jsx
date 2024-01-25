@@ -8,7 +8,7 @@ const SignIn = () => {
 
     const [formData, setFormData] = useState({
         email: '',
-        pass: ''
+        password: ''
     })
 
     const dispatch = useDispatch();
@@ -37,7 +37,7 @@ const SignIn = () => {
             <h1 className='self-center text-4xl mb-8'>Sign In</h1>
             <form className="flex flex-col gap-4" onSubmit={handleSignIn} action="">
                 <input className={inputClassName} autoComplete="off" placeholder="E-mail" onInput={handleInput} type="text" name='email' />
-                <input className={inputClassName} autoComplete="off" placeholder="Password" onInput={handleInput} type="text" name='pass' />
+                <input className={inputClassName} autoComplete="off" placeholder="Password" onInput={handleInput} type="text" name='password' />
                 <button className="bg-slate-700 p-4 rounded-xl text-white" type="submit">Submit</button>
             </form>
         </div>
