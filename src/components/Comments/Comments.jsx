@@ -45,7 +45,7 @@ const Comments = ({ itineraryId, userId, cityId, update }) => {
       <h1 className='text-5xl mb-8'>Comments</h1>
       <div className='flex flex-col bg-gray-900 md:p-4 rounded-xl w-[70vw]'>
         {currentItineraryComments?.comments.map((e) =>
-          (e.itineraryId === itineraryId) ? <Comment update={updatedValue => setUpdate(updatedValue)} key={e._id} singleCommentId={e._id} ownComment={(userId === e.user._id) ? true : false} comment={e.comment} userImage={e.user.image} user={e.user.name} time="12:00" /> : null)
+          (e.itineraryId === itineraryId) ? <Comment update={updatedValue => setUpdate(updatedValue)} key={e._id} singleCommentId={e._id} ownComment={(userId === e.user._id) ? true : false} comment={e.comment} userImage={e.user.image} username={e.user.username} time="12:00" /> : null)
         }
         {currentItineraryComments.comments.length === 0 ? <h1 className='max-md:text-2xl md:text-3xl self-center text-yellow-500 mt-4'>No comments yet.</h1> : null}
         <CommentInput update={updatedValue => update(updatedValue)} itineraryId={itineraryId} userId={userId} />
