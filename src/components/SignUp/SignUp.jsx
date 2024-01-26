@@ -8,7 +8,7 @@ const SignUp = () => {
 
   const dispatch = useDispatch();
 
-  const inputClassName = 'bg-gray-950 p-2 text-white rounded-lg max-md:text-xs'
+  const inputClassName = 'bg-gray-100 p-2 text-xl rounded-lg max-md:text-xs'
 
   const [formData, setFormData] = useState({
     name: '',
@@ -46,8 +46,8 @@ const SignUp = () => {
   }
 
   return (
-    <div className="flex flex-col items-center gap-4 bg-white text-black max-md:p-3 md:p-8 max-md:text-xl md:text-3xl rounded-xl">
-      <h1 className='self-center text-4xl mb-8'>Sign Up</h1>
+    <div className="flex flex-col items-center gap-4 bg-transparent text-black max-md:p-3 md:p-8 max-md:text-xs md:text-3xl rounded-xl">
+      <h1 className='self-center text-white text-4xl mb-8'>Sign Up</h1>
       <form className="flex flex-col gap-4 max-w-[90vw]" onSubmit={handleSignUp} action="">
         <input className={inputClassName} autoComplete="off" placeholder="Name" onInput={handleInput} type="text" name='name' />
         <input className={inputClassName} autoComplete="off" placeholder="Last name" onInput={handleInput} type="text" name='last_name' />
@@ -59,7 +59,7 @@ const SignUp = () => {
           <option value={null}>--- Select a country ---</option>
           {countries.map((e, i) => <option key={[i]} value={e.name.common}>{e.name.common}</option>)}
         </select>
-        <button className="bg-slate-700 p-4 rounded-xl text-white" type="submit">Submit</button>
+        <button className="bg-white p-4 rounded-xl text-lg" type="submit">Submit</button>
       </form>
     </div>
   )

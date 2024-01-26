@@ -24,13 +24,13 @@ const GoogleAuth = () => {
             });
             window.google.accounts.id.renderButton(
                 googleButton.current,
-                { shape: 'pill', theme: "outline", size: "large" }  // customization attributes
+                { shape: 'pill', theme: "dark", size: "medium" }  // customization attributes
             );
         }
     }, [])
 
     return (
-        <div className="bg-white text-black p-4 rounded-xl" ref={googleButton}></div>
+        <div className="mx-8" ref={googleButton}></div>
     )
 }
 
