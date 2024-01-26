@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link as Anchor } from 'react-router-dom';
 import {
   Card,
@@ -97,16 +97,18 @@ const Navbar = ({ button }) => {
                             </div>
                             <List>
                               {
-                                button.map((e) => <ListItem className='bg-slate-600 mb-2 rounded-2xl backdrop-blur-xl block' to={e.to} key={e.id}><Anchor className='block w-full' key={e.id} to={e.to}>{e.title}</Anchor></ListItem>)
+                                button.map((e) => <ListItem className='bg-slate-600 mb-2 backdrop-blur-xl p-0 rounded-sm text-center' to={e.to} key={e.id}><Anchor className='block w-full' key={e.id} to={e.to}>{e.title}</Anchor></ListItem>)
                               }
                               <hr className="my-2 border-blue-gray-50" />
-                              <ListItem className={user ? 'bg-red-500 rounded-xl' : 'bg-teal-600 rounded-xl'}>
-                                <ListItemPrefix>
-                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="pr-2 w-6 h-6">
+                              <ListItem className={user ? 'bg-red-500 p-0 rounded-sm' : 'bg-teal-600 p-0 rounded-sm'}>
+                                {user ?
+                                  <button onClick={handleSignOutButton} className='flex justify-evenly w-full bg-red-500' to='/signout'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                  </svg>
-                                </ListItemPrefix>
-                                {user ? <button onClick={handleSignOutButton} className='block w-full bg-red-500' to='/signout'>Sign Out</button> : <Anchor className='block w-full' to='/sign'>Sign In</Anchor>}
+                                  </svg>Sign Out</button>
+                                  :
+                                  <Anchor className='flex justify-evenly w-full' to='/sign'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                  </svg>Sign In</Anchor>}
                               </ListItem>
                               <hr className="my-2 border-blue-gray-50" />
                               MyTinerary 2023

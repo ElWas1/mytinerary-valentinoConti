@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 const SignIn = () => {
 
-    const inputClassName = 'bg-gray-950 p-2 text-white rounded-lg'
+    const inputClassName = 'bg-white p-2 text-xl text-black rounded-lg max-lg:text-xs'
 
     const [formData, setFormData] = useState({
         email: '',
@@ -33,12 +33,12 @@ const SignIn = () => {
     }
 
     return (
-        <div className="flex flex-col items-center gap-4 bg-white text-black max-md:p-3 md:p-8 max-md:text-xl md:text-3xl rounded-xl">
-            <h1 className='self-center text-4xl mb-8'>Sign In</h1>
+        <div className="flex flex-col items-center gap-4 bg-transparent text-black max-md:p-3 md:p-8 max-md:text-xl md:text-3xl rounded-xl">
+            <h1 className='self-center text-white text-4xl mb-8'>Sign In</h1>
             <form className="flex flex-col gap-4" onSubmit={handleSignIn} action="">
                 <input className={inputClassName} autoComplete="off" placeholder="E-mail" onInput={handleInput} type="text" name='email' />
                 <input className={inputClassName} autoComplete="off" placeholder="Password" onInput={handleInput} type="text" name='password' />
-                <button className="bg-slate-700 p-4 rounded-xl text-white" type="submit">Submit</button>
+                <button className="bg-white p-3 rounded-xl text-lg" type="submit">Submit</button>
             </form>
         </div>
     )
