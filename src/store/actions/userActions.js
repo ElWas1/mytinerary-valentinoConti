@@ -81,7 +81,7 @@ export const user_renew_token = createAsyncThunk(
         try {
             const configs = { headers: { 'Authorization': `Bearer ${obj}` } }
             const { data } = await axios.post('http://localhost:8000/api/auth/checkTokenExpiration', null, configs)
-            console.log(data);
+
             localStorage.setItem('token', data.response.token);
         } catch (error) {
             return null

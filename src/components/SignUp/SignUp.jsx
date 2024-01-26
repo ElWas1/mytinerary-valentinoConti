@@ -15,7 +15,7 @@ const SignUp = () => {
     last_name: '',
     username: '',
     email: '',
-    pass: '',
+    password: '',
     image: '',
     country: ''
   })
@@ -53,7 +53,7 @@ const SignUp = () => {
         <input className={inputClassName} autoComplete="off" placeholder="Last name" onInput={handleInput} type="text" name='last_name' />
         <input className={inputClassName} autoComplete="off" placeholder="Username" onInput={handleInput} type="text" name='username' />
         <input className={inputClassName} autoComplete="off" placeholder="E-mail" onInput={handleInput} type="text" name='email' />
-        <input className={inputClassName} autoComplete="off" placeholder="Password" onInput={handleInput} type="text" name='pass' />
+        <input className={inputClassName} autoComplete="off" placeholder="Password" onInput={handleInput} type="text" name='password' />
         <input className={inputClassName} autoComplete="off" placeholder="Profile photo" onInput={handleInput} type="text" name='image' />
         <select autoComplete="off" className={inputClassName} onInput={handleInput} name="country" id="country">
           <option value={null}>--- Select a country ---</option>
