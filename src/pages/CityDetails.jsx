@@ -29,7 +29,7 @@ const CityDetails = () => {
     }, [update, dispatch])
 
     return (
-        <div className="flex flex-col items-center in-h-[calc(100vh/1.5)] bg-cover bg-fixed" style={{ "background-image": `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${city?.image}')` }}>
+        <div className="flex flex-col items-center in-h-[calc(100vh/1.5)] bg-cover bg-fixed" style={{ "backgroundImage": `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${city?.image}')` }}>
             <Anchor className='self-start bg-slate-500/70 backdrop-blur-lg p-4 rounded xl mt-4 ml-4 font-bold lg:text-xl mb-4 hover:bg-slate-700 duration-500' to={'/cities'}>
                 Go back to Cities
             </Anchor>

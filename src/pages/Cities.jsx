@@ -63,7 +63,7 @@ const Cities = () => {
     }
 
     return (
-        <div className="min-h-[calc(100vh/1.5)] bg-center bg-fixed bg-auto" style={{ "background-image": "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/beach.jpg')" }}>
+        <div className="min-h-[calc(100vh/1.5)] bg-center bg-fixed bg-auto" style={{ "backgroundImage": "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/beach.jpg')" }}>
             <h2 className="text-center max-md:text-6xl md:text-8xl font-bold pt-48">Cities</h2>
             <div className="bg-slate-500/50 backdrop-blur-lg max-sm:mt-36 sm:mt-48 p-8 min-w-screen min-h-[50vh] flex flex-col items-center">
                 <div className='flex flex-row min-w-full'>
