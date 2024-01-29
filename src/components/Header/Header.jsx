@@ -1,49 +1,9 @@
-import { useState } from 'react';
 import { Link as Anchor } from 'react-router-dom';
-import {
-  Card,
-  Typography,
-  List,
-  ListItem,
-  ListItemPrefix
-} from "@material-tailwind/react";
-import { useSelector, useDispatch } from 'react-redux';
-import { user_signout } from '../../store/actions/userActions';
-import Swal from 'sweetalert2';
+import { useSelector } from 'react-redux';
 
-const Navbar = ({ button }) => {
+const Navbar = () => {
 
   const user = useSelector(store => store.user.user)
-
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  const handleShowDropdown = () => {
-    setShowDropdown(!showDropdown)
-  }
-
-  const dispatch = useDispatch();
-
-  const handleSignOutButton = () => {
-    Swal.fire({
-      title: 'Are you sure that you want to log out?',
-      showDenyButton: true,
-      confirmButtonText: 'Log out',
-      denyButtonText: `Cancel`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire('You have been logged out!', '', 'success')
-        const token = localStorage.getItem('token').toString()
-        dispatch(user_signout(token))
-      } else if (result.isDenied) {
-        Swal.fire('You cancelled the action.', '', 'info')
-      }
-    })
-  }
-
-  button = [
-    { title: 'Home', to: '/', id: 1 },
-    { title: 'Cities', to: '/cities', id: 2 }
-  ]
 
   return (
     <header className="z-20 relative backdrop-blur-xl dark:bg-gray-900/20">
@@ -62,69 +22,26 @@ const Navbar = ({ button }) => {
                 </svg>)}
               </Anchor>
             </div>
-
-            <div className="block">
-              <button
-                onClick={handleShowDropdown} className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
+            <label htmlFor="my-drawer-4" className="drawer-button btn text-black hover:text-white hover:bg-indigo-600 duration-300 bg-white max-md:max-w-16 max-md:text-xs">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
-              <ul>
-                {
-                  button.map((e) => (
-                    <li key={e.id}>
-                      {
-                        showDropdown
-                          ? <Card className="text-white rounded-none bottom-0 left-[100vw/1.5] right-0 top-16 absolute h-[calc(100vh-4.4rem)] w-fit max-w-[20rem] shadow-xl shadow-blue-gray-900/5 bg-gray-600">
-                            <div className="mb-2 flex items-center gap-4 p-4">
-                              <img src="/suitcase.png" alt="brand" className="h-8 w-8" />
-                              <Typography variant="h5" color="blue-gray">
-                                Menu
-                              </Typography>
-                            </div>
-                            <List>
-                              {
-                                button.map((e) => <ListItem className='bg-slate-600 mb-2 backdrop-blur-xl p-0 rounded-sm text-center' to={e.to} key={e.id}><Anchor className='block w-full' key={e.id} to={e.to}>{e.title}</Anchor></ListItem>)
-                              }
-                              <hr className="my-2 border-blue-gray-50" />
-                              <ListItem className={user ? 'bg-red-500 p-0 rounded-sm' : 'bg-teal-600 p-0 rounded-sm'}>
-                                {user ?
-                                  <button onClick={handleSignOutButton} className='flex justify-evenly w-full bg-red-500' to='/signout'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                  </svg>Sign Out</button>
-                                  :
-                                  <Anchor className='flex justify-evenly w-full' to='/sign'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                  </svg>Sign In</Anchor>}
-                              </ListItem>
-                              <hr className="my-2 border-blue-gray-50" />
-                              MyTinerary 2023
-                            </List>
-                          </Card>
-                          : null
-                      }
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </label>
           </div>
         </div>
       </div>
-    </header >
+    </header>
   )
 }
 
