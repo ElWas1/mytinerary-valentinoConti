@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Activities from '../Activities/Activities';
+import Activities from './Activities/Activities.jsx';
 import Heart from "react-heart";
 // import { click_heart } from '../../store/actions/likeActions';
-import ItineraryPrice from '../ItineraryPrice/ItineraryPrice';
-import Comments from '../Comments/Comments.jsx';
+import ItineraryPrice from './ItineraryPrice.jsx';
+import Comments from './Comments/Comments.jsx';
 import Swal from 'sweetalert2';
 import { useEffect } from 'react';
 import { get_user_id } from '../../store/actions/userActions';

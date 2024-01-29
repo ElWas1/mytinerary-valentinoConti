@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
-import { post_comment } from '../../store/actions/userActions.js';
-import { get_comments } from '../../store/actions/itineraryActions.js';
+import { post_comment } from '../../../store/actions/userActions.js';
+import { get_comments } from '../../../store/actions/itineraryActions.js';
 
 const CommentInput = ({ itineraryId, userId, update }) => {
 

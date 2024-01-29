@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 
 import Comment from './Comment.jsx';
 import CommentInput from './CommentInput.jsx';
-import { get_comments, get_itineraries_by_city_id } from '../../store/actions/itineraryActions.js';
-import { get_user_id } from '../../store/actions/userActions.js';
+import { get_comments, get_itineraries_by_city_id } from '../../../store/actions/itineraryActions.js';
+import { get_user_id } from '../../../store/actions/userActions.js';
 
 const Comments = ({ itineraryId, userId, cityId, update }) => {
 

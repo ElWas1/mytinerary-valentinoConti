@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { delete_comment } from '../../store/actions/userActions';
+import { delete_comment } from '../../../store/actions/userActions';
 import { Link as Anchor } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
