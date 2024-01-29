@@ -27,7 +27,7 @@ const UserProfile = () => {
   }
 
   return (
-    <div className='flex flex-col items-center gap-4 min-h-full my-8'>
+    <div className='flex flex-col items-center gap-4 my-8'>
       <div className='relative'>
         <img className='w-48 rounded-full relative' src={visitedUser.image} alt="Profile Photo" />
         <button className=''>
