@@ -68,17 +68,19 @@ const PopularMyTineraries = () => {
 
     return (
 
-        <div className="bg-gray-600/50 backdrop-blur-md text-center self-center relative md:px-8 md:py-2 max-md:px-1 max-md:mx-2 rounded-xl mb-4">
-            <h1 className="max-sm:text-xl text-4xl md:mb-4">Popular MyTineraries</h1>
-            <p className="max-md:pb-2 md:pb-4">Autoslide is turned {intervalId ? <span className='text-green-500'>on</span> : <span className='text-red-500'>off</span>}</p>
+        <div className="bg-gray-600/50 backdrop-blur-md text-center self-center relative lg:px-8 lg:py-2 max-lg:px-1 max-lg:mx-2 rounded-xl xl:mb-4">
+            <h1 className="max-lg:text-xl lg:text-4xl lg:mb-4">Popular MyTineraries</h1>
+            <p className="max-lg:pb-2 lg:pb-4">Autoslide is turned {intervalId ? <span className='text-green-500'>on</span> : <span className='text-red-500'>off</span>}</p>
             <div id="carousel-page-1" className="flex flex-wrap md:gap-2 max-md:gap-1 justify-evenly">
                 <CarouselCities className={carouselItemsClass} image={divImages[index].image1} city={divImages[index].city1} country={divImages[index].country1} />
                 <CarouselCities className={carouselItemsClass} image={divImages[index].image2} city={divImages[index].city2} country={divImages[index].country2} />
                 <CarouselCities className={carouselItemsClass} image={divImages[index].image3} city={divImages[index].city3} country={divImages[index].country3} />
                 <CarouselCities className={carouselItemsClass} image={divImages[index].image4} city={divImages[index].city4} country={divImages[index].country4} />
             </div>
-            <button className="max-md:m-4 md:m-2 bg-purple-800 hover:bg-red-500 duration-300 rounded-xl p-2" onClick={prevSlide}>Prev</button>
-            <button className="max-md:m-4 md:m-2 bg-purple-800 hover:bg-green-700 duration-300 rounded-xl p-2" onClick={nextSlide}>Next</button>
+            <div className="flex flex-row justify-center gap-4">
+                <button className="md:m-2 bg-purple-800 hover:bg-red-500 duration-300 rounded-md p-2" onClick={prevSlide}>Prev</button>
+                <button className="md:m-2 bg-purple-800 hover:bg-green-700 duration-300 rounded-md p-2" onClick={nextSlide}>Next</button>
+            </div>
         </div>
     )
 }

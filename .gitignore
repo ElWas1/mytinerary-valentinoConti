@@ -25,6 +25,3 @@ dist-ssr
 
 # Environment variables
 .env
-
-# Contentlayer
-.contentlayer
