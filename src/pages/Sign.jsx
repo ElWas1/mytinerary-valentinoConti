@@ -2,7 +2,6 @@ import SignIn from '../components/Sign/SignIn/SignIn.jsx';
 import SignUp from '../components/Sign/SignUp/SignUp.jsx';
 
 import { useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import GoogleAuth from '../components/Sign/GoogleAuth.jsx';
 
 const Sign = () => {
@@ -31,11 +30,11 @@ const Sign = () => {
                     <button onClick={handleChangeSignMethod} className="self-center p-2 bg-white w-[80%]">Sign Up</button>
                 </div>
                 <div className='hidden' ref={signUp}>
-                    <SignUp />
+                {localStorage.getItem('token') ? null : <SignUp />}
                     <h1 className='self-center text-white'>Already have an account?</h1>
                     <button onClick={handleChangeSignMethod} className="self-center p-2 bg-white w-[80%] max-md:mb-8">Sign In</button>
                 </div>
-                <GoogleAuth />
+                {localStorage.getItem('token') ? null : <GoogleAuth />}
             </div>
         </div>
     )

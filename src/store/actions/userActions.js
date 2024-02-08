@@ -95,7 +95,9 @@ export const user_signout = createAsyncThunk(
         try {
             const token = await axios.post('http://localhost:8000/api/auth/signout', null, { headers: { 'Authorization': `Bearer ${obj}` } })
             localStorage.clear();
-            window.location.reload();
+            setTimeout(() => {
+                window.location.reload();
+            }, 800);
             return {
                 token: token.data,
             }

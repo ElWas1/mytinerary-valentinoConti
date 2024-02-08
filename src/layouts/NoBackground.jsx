@@ -17,7 +17,7 @@ const NoBackground = () => {
     ]
 
     const userButtons = [
-        { title: 'User Settings', to: `/user/${user?.username}`, id: 'user_settings' },
+        { title: 'User Settings', to: '/user/settings', id: 'user_settings' },
         { title: 'Saved Itineraries', to: '/', id: 'saved_itineraries' },
         { title: 'Liked Itineraries', to: '/', id: 'liked_itineraries' },
         { title: 'My Itineraries', to: '/', id: 'my_itineraries' }
@@ -56,11 +56,14 @@ const NoBackground = () => {
             denyButtonText: `Cancel`,
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire('You have been logged out!', '', 'success')
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "You have been logged out!",
+                    showConfirmButton: false
+                });
                 const token = localStorage.getItem('token').toString()
                 dispatch(user_signout(token))
-            } else if (result.isDenied) {
-                Swal.fire('You cancelled the action.', '', 'info')
             }
         })
     }
@@ -125,7 +128,7 @@ const NoBackground = () => {
                                 <hr className="my-2 border-blue-gray-50" />
                             </div>
                         }
-                        <h5 className='text-center mt-4'>MyTinerary 2024</h5>
+                        <h5 className='text-center mt-2'>MyTinerary 2024</h5>
                     </ul>
                 </div>
             </div>

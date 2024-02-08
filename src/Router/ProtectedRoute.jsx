@@ -1,13 +1,15 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-const ProtectedRoute = ({ children, path }) => {
+const ProtectedRoute = ({ children, path, allow }) => {
 
-    let user = useSelector(store => store.user.user)
+    const user = useSelector(store => store.user.user)
 
-    if (user) return <Navigate to={path} />
+    if (user && allow === 'user') return children
 
-    return children
+    if (!user && allow === 'non-user') return children
+
+    return <Navigate to={path} />
 }
 
 export default ProtectedRoute
