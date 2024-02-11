@@ -2,7 +2,7 @@ const PublicProfile = () => {
   return (
     <div className="w-fit">
       <form className='flex flex-col gap-4' action={null} method={null} onSubmit={null}>
-        <p>Profile info options</p>
+        <p className="text-xl font-medium mb-4 bg-base-300 rounded-md max-sm:p-2 sm:p-4">Public profile settings</p>
         <label htmlFor="change_username">Change Username</label>
         <input className='bg-white text-black mb-8 p-1 rounded-md' type="text" name="change_username" id="change_username" />
         <label htmlFor="change_email">Change Email</label>
