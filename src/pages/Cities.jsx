@@ -1,11 +1,13 @@
 import CitiesCards from '../components/CitiesCards/CitiesCards.jsx';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { get_cities } from '../store/actions/cityActions.js';
 import Swal from "sweetalert2";
 import { useNavigate } from 'react-router-dom';
 
 const Cities = () => {
+
+    const [backgroundImageStyle, setBackgroundImageStyle] = useState({})
 
     const dispatch = useDispatch();
 
@@ -19,8 +21,60 @@ const Cities = () => {
     const addItineraryButton = useRef(null)
     const clearButton = useRef(null)
 
+
+    function checkImageCompatibility(urls) {
+        return new Promise((resolve, reject) => {
+            let compatibleImage = null;
+            let completed = 0;
+
+            for (const url of urls) {
+                const img = new Image();
+                img.onload = () => {
+                    if (!compatibleImage) {
+                        compatibleImage = url;
+                    }
+                    completed++;
+
+                    if (completed === urls.length && compatibleImage) {
+                        resolve(compatibleImage);
+                    } else if (completed === urls.length) {
+                        reject(new Error('No compatible images found.'));
+                    }
+                };
+                img.onerror = () => {
+                    console.log(`The image ${url} is not compatible.`);
+                    completed++;
+
+                    if (completed === urls.length) {
+                        reject(new Error('No compatible images found.'));
+                    }
+                };
+                img.src = url;
+            }
+        });
+    }
+
     useEffect(() => {
+
+        const imageUrls = [
+            '/beach.avif',
+            '/beach.jpg'
+        ];
+
         dispatch(get_cities())
+
+        checkImageCompatibility(imageUrls)
+            .then(compatibleImage => {
+                console.log(`The first compatible image is: ${compatibleImage}`);
+                // Insert the URL of the compatible image into the div's style
+                setBackgroundImageStyle({ "backgroundImage": `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${compatibleImage}')` });
+            })
+            .catch(error => {
+                console.error('No compatible images found:', error);
+                // If no compatible images are found, set a default background image
+                setBackgroundImageStyle({ "backgroundImage": "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/beach.jpg')" });
+            });
+
     }, [dispatch]);
 
     const handleCitySearch = () => {
@@ -63,7 +117,7 @@ const Cities = () => {
     }
 
     return (
-        <div className="min-h-[calc(100vh/1.5)] bg-center bg-fixed bg-auto" style={{ "backgroundImage": "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/beach.jpg')" }}>
+        <div className="min-h-[calc(100vh/1.5)] bg-center bg-fixed bg-auto" style={backgroundImageStyle}>
             <h2 className="text-center max-md:text-6xl md:text-8xl font-bold pt-48">Cities</h2>
             <div className="bg-slate-500/50 backdrop-blur-lg max-sm:mt-36 sm:mt-48 p-8 min-w-screen min-h-[50vh] flex flex-col items-center">
                 <div className='flex flex-row min-w-full'>
