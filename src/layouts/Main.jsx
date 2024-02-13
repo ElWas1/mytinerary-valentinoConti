@@ -179,7 +179,7 @@ const Main = () => {
                     <Outlet />
                     <Footer />
                 </div>
-                <div className="drawer-side z-30 overflow-x-hidden">
+                <div className="drawer-side z-30">
                     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 min-h-full max-w-[90vw] bg-base-200 text-base-content">
                         <div className="mb-2 flex items-center justify-center gap-4 p-4">
