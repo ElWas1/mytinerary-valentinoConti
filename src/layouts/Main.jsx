@@ -1,12 +1,23 @@
 import Footer from '../components/Footer/Footer.jsx';
 import Header from '../components/Header/Header.jsx';
 import { Outlet, Link as Anchor } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 import { user_signout } from '../store/actions/userActions.js';
+import { page_is_loading } from '../store/actions/pageActions.js';
 
 const Main = () => {
+
+    const parentDiv = useRef(null)
+
+    const loaderDiv = useRef(null)
+
+    const loader = useRef(null)
+
+    const contentRef = useRef(null)
+
+    const loading = useSelector(store => store.page.loading)
 
     const imageClass = 'bg-cover w-screen h-screen brightness-50'
 
@@ -34,39 +45,65 @@ const Main = () => {
         })
     }
 
-    useEffect(
-        () => {
-            //get all the imgs in the "slide" div and change to an array of img objects
-            let slide = document.getElementById("slide");
-            let arr = Array.prototype.slice.call(slide.children);
+    useEffect(() => {
 
-            //initialize css
-            arr.map(function (imgObj) {
-                imgObj.classList.add("slide-img");
-            });
+        if (loading) loader.current.style.opacity = 1
 
-            //showing the first slide
-            arr[0].classList.add("show");
+        const vanishLoader = loading ? setTimeout(() => {
+            dispatch(page_is_loading());
+            contentRef.current.className = "drawer drawer-end"
+            parentDiv.current.className = ""
+        }, 2000) : contentRef.current.className = "drawer drawer-end"
 
-            //initializing values
-            let currentSlide = 1;
-            let slideLength = slide.children.length;
-            let prevSlide = 0;
+        const hideLoader = loading ? setTimeout(() => {
+            loaderDiv.current.className = 'hidden'
+        }, 2500) : loaderDiv.current.className = 'hidden'
 
-            //interval function
-            setInterval(function () {
-                if (currentSlide >= slideLength)
-                    currentSlide = 0;
+        //get all the imgs in the "slide" div and change to an array of img objects
+        let slide = document.getElementById("slide");
+        let arr = Array.prototype.slice.call(slide.children);
 
-                arr[prevSlide].classList.remove("show");
-                arr[currentSlide].classList.add("show");
+        //initialize css
+        arr.map(function (imgObj) {
+            imgObj.classList.add("slide-img");
+        });
 
-                prevSlide = currentSlide;
-                currentSlide++;
+        //showing the first slide
+        arr[0].classList.add("show");
 
-            }, 5000)
-        }),
-        []
+        //initializing values
+        let currentSlide = 1;
+        let slideLength = slide.children.length;
+        let prevSlide = 0;
+
+        //interval function
+        setInterval(function () {
+            if (currentSlide >= slideLength)
+                currentSlide = 0;
+
+            arr[prevSlide].classList.remove("show");
+            arr[currentSlide].classList.add("show");
+
+            prevSlide = currentSlide;
+            currentSlide++;
+
+        }, 5000)
+
+        return () => {
+            clearTimeout(vanishLoader)
+            clearTimeout(hideLoader)
+        };
+    }, [])
+
+    const loaderContainerStyles = {
+        opacity: loading ? 1 : 0,
+        transition: 'opacity .5s ease-in-out'
+    };
+
+    const loaderStyles = {
+        opacity: 0,
+        transition: 'opacity 1s ease-in-out'
+    }
 
     const button = [
         { title: 'Home', to: '/', id: 'home' },
@@ -106,8 +143,17 @@ const Main = () => {
     }
 
     return (
-        <>
-            <div className="drawer drawer-end">
+        <div ref={parentDiv} className='overflow-hidden h-screen'>
+            <div ref={loaderDiv} className="fixed top-0 bottom-0 left-0 right-0 z-50 bg-gray-900 flex flex-col gap-4 items-center justify-center w-full h-full" style={loaderContainerStyles}>
+                <div ref={loader} className='flex flex-col items-center justify-center' style={loaderStyles}>
+                    <div className="p-2 mb-8 animate-spin shadow-md shadow-indigo-600 bg-gradient-to-bl from-pink-400 via-purple-700 to-indigo-600 h-24 w-24 aspect-square rounded-full">
+                        <div className="rounded-full h-full w-full bg-slate-100 dark:bg-gray-950 background-blur-md" />
+                    </div>
+                    <img className='max-md:w-[50%] md:w-[30%] mb-4' src="/suitcase.png" alt="Logo" />
+                    <p className='text-3xl text-white font-bold'>Loading...</p>
+                </div>
+            </div>
+            <div ref={contentRef} className="drawer drawer-end">
                 <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     <div id='slide'>
@@ -189,7 +235,7 @@ const Main = () => {
                     </ul>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
