@@ -47,7 +47,10 @@ const Main = () => {
 
     useEffect(() => {
 
-        if (loading) loader.current.style.opacity = 1
+        if (loading) {
+            loader.current.style.opacity = 1
+            loader.current.style.transform = 'scale(1)'
+        }
 
         const vanishLoader = loading ? setTimeout(() => {
             dispatch(page_is_loading());
@@ -57,7 +60,9 @@ const Main = () => {
 
         const hideLoader = loading ? setTimeout(() => {
             loaderDiv.current.className = 'hidden'
-        }, 2500) : loaderDiv.current.className = 'hidden'
+        }, 3000) : loaderDiv.current.className = 'hidden'
+
+        !loading ? parentDiv.current.className = '' : null
 
         //get all the imgs in the "slide" div and change to an array of img objects
         let slide = document.getElementById("slide");
@@ -102,7 +107,8 @@ const Main = () => {
 
     const loaderStyles = {
         opacity: 0,
-        transition: 'opacity 1s ease-in-out'
+        transition: 'opacity 1s ease-in-out, transform 1s ease-in-out',
+        transform: loading ? 'scale(0)' : 'scale(.01)'
     }
 
     const button = [
@@ -162,7 +168,7 @@ const Main = () => {
                         <img className={imageClass} src="/lake1.jpg" alt="Lake" />
                         <img className={imageClass} src="/mountains.jpg" alt="Mountains" />
                         <img className={imageClass} src="/road.jpg" alt="Road" />
-                        <img className={imageClass} src="/beach.jpg" alt="Beach" />
+                        <img className={imageClass} src="/beach.avif" alt="Beach" />
                         <img className={imageClass} src="/city2.jpg" alt="City 2" />
                         <img className={imageClass} src="/boat2.jpg" alt="Boat 2" />
                         <img className={imageClass} src="/bridge.jpg" alt="Bridge" />
