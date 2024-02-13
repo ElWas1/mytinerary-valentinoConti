@@ -10,11 +10,12 @@ export const user_signin = createAsyncThunk(
             localStorage.setItem('token', data.response.token)
             localStorage.setItem('user', JSON.stringify(data.response.user))
 
-            Swal.fire(
-                'You are Logged In!',
-                `Welcome, ${data.response.user.name}!`,
-                'success'
-            )
+            Swal.fire({
+                title: 'You are Logged In!',
+                text: `Welcome, ${data.response.user.name}!`,
+                icon: 'success',
+                backdrop: '#000'
+            })
 
             return {
                 user: data.response.user,
