@@ -1,8 +1,9 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { page_is_loading } from "../actions/pageActions";
+import { page_is_loading, change_bg } from "../actions/pageActions";
 
 const initialState = {
-    loading: true
+    loading: true,
+    currentBg: null
 }
 
 const pageReducer = createReducer(initialState, (builder) => {
@@ -11,6 +12,12 @@ const pageReducer = createReducer(initialState, (builder) => {
             return {
                 ...state,
                 loading: action.payload.page_is_loading
+            }
+        })
+        .addCase(change_bg, (state, action) => {
+            return {
+                ...state,
+                currentBg: action.payload.currentBg
             }
         })
 })

@@ -1,13 +1,12 @@
 import CitiesCards from '../components/CitiesCards/CitiesCards.jsx';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { get_cities } from '../store/actions/cityActions.js';
 import Swal from "sweetalert2";
 import { useNavigate } from 'react-router-dom';
+import { change_bg } from '../store/actions/pageActions.js';
 
 const Cities = () => {
-
-    const [backgroundImageStyle, setBackgroundImageStyle] = useState({})
 
     const dispatch = useDispatch();
 
@@ -65,14 +64,10 @@ const Cities = () => {
 
         checkImageCompatibility(imageUrls)
             .then(compatibleImage => {
-                console.log(`The first compatible image is: ${compatibleImage}`);
-                // Insert the URL of the compatible image into the div's style
-                setBackgroundImageStyle({ "backgroundImage": `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${compatibleImage}')` });
+                dispatch(change_bg(compatibleImage));
             })
             .catch(error => {
                 console.error('No compatible images found:', error);
-                // If no compatible images are found, set a default background image
-                setBackgroundImageStyle({ "backgroundImage": "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/beach.jpg')" });
             });
 
     }, [dispatch]);
@@ -117,7 +112,7 @@ const Cities = () => {
     }
 
     return (
-        <div className="min-h-[calc(100vh/1.5)] bg-center bg-fixed bg-auto" style={backgroundImageStyle}>
+        <div className="min-h-[calc(100vh/1.5)] bg-center bg-fixed bg-auto">
             <h2 className="text-center max-md:text-6xl md:text-8xl font-bold pt-48">Cities</h2>
             <div className="bg-slate-500/50 backdrop-blur-lg max-sm:mt-36 sm:mt-48 p-8 min-w-screen min-h-[50vh] flex flex-col items-center">
                 <div className='flex flex-row min-w-full'>

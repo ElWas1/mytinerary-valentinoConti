@@ -1,10 +1,14 @@
 import SignIn from '../components/Sign/SignIn/SignIn.jsx';
 import SignUp from '../components/Sign/SignUp/SignUp.jsx';
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import GoogleAuth from '../components/Sign/GoogleAuth.jsx';
+import { change_bg } from '../store/actions/pageActions.js';
 
 const Sign = () => {
+
+    const dispatch = useDispatch()
 
     const signIn = useRef(null);
     const signUp = useRef(null)
@@ -21,8 +25,12 @@ const Sign = () => {
         }
     }
 
+    useEffect(() => {
+        dispatch(change_bg("/city3.jpg"))
+    }, [])
+
     return (
-        <div className="flex flex-col justify-center items-center min-h-[calc(100vh/1.5)] bg-center bg-fixed bg-auto" style={{ "backgroundImage": `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/city3.jpg')` }}>
+        <div className="flex flex-col justify-center items-center min-h-[calc(100vh/1.5)] bg-center bg-fixed bg-auto">
             <div className='max-[580px]:bg-slate-700 -[500px] bg-white my-8 flex flex-row justify-evenly flex-wrap items-center max-[580px]:py-4'>
                 <div ref={signIn} className='flex flex-col bg-slate-700 text-black gap-4 p-8'>
                     {localStorage.getItem('token') ? null : <SignIn />}
