@@ -9,6 +9,8 @@ const NoBackground = () => {
 
     const user = useSelector(store => store.user.user)
 
+    const bgImage = useSelector(store => store.page.currentBg)
+
     const dispatch = useDispatch()
 
     const button = [
@@ -73,6 +75,7 @@ const NoBackground = () => {
             <div className="drawer drawer-end">
                 <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
+                    <img className="fixed h-full w-screen -z-10 brightness-50" src={bgImage} alt="Background Image" />
                     <Header />
                     <Outlet />
                     <Footer />
