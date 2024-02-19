@@ -3,8 +3,11 @@ import { user_signup, get_countries } from "../../../store/actions/userActions";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import FileUploader from "../../FileUploader/FileUploader";
 
 const SignUp = () => {
+
+  const imageURL = useSelector(store => store.page.signUpImage)
 
   const dispatch = useDispatch();
 
@@ -24,7 +27,11 @@ const SignUp = () => {
 
   useEffect(() => {
     dispatch(get_countries())
-  }, [])
+    setFormData({
+      ...formData,
+      image: imageURL
+    })
+  }, [imageURL])
 
   const handleInput = (e) => {
     setFormData({
@@ -40,7 +47,7 @@ const SignUp = () => {
         user: formData
       }))
     } catch (error) {
-      
+      console.error(error);
     }
 
   }
@@ -54,11 +61,11 @@ const SignUp = () => {
         <input className={inputClassName} autoComplete="off" placeholder="Username" onInput={handleInput} type="text" name='username' />
         <input className={inputClassName} autoComplete="off" placeholder="E-mail" onInput={handleInput} type="text" name='email' />
         <input className={inputClassName} autoComplete="off" placeholder="Password" onInput={handleInput} type="password" name='password' />
-        <input className={inputClassName} autoComplete="off" placeholder="Profile photo" onInput={handleInput} type="text" name='image' />
         <select autoComplete="off" className={inputClassName} onInput={handleInput} name="country" id="country">
           <option value={null}>--- Select a country ---</option>
           {countries.map((e, i) => <option key={[i]} value={e.name.common}>{e.name.common}</option>)}
         </select>
+        <FileUploader />
         <button className="bg-white p-4 rounded-xl text-lg" type="submit">Submit</button>
       </form>
     </div>

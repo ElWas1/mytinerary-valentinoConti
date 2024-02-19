@@ -1,4 +1,4 @@
-import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAction } from "@reduxjs/toolkit";
 
 export const page_is_loading = createAction(
     'page_is_loaded',
@@ -21,3 +21,13 @@ export const change_bg = createAction(
         }
     }
 )
+
+export const change_signup_image = createAction(
+    'change_signup_image',
+    (img) => {
+        return {
+            payload: {
+                signUpImage: img
+            }
+        }
+    })
