@@ -62,10 +62,10 @@ const UserSettings = () => {
     }
 
     return (
-        <div className="flex flex-row justify-center">
+        <div className="flex flex-row justify-center bg-zinc-900">
             <div ref={sideBar} className="flex flex-col min-w-[15vw] justify-center border-e bg-white">
                 <div className="max-sm:px-1 sm:px-4 py-6 flex flex-col items-center text-black">
-                    <span className="max-sm:text-xs max-sm:font-medium sm:p-4 lg:text-xl rounded-md bg-gray-100">
+                    <span className="max-sm:text-xs max-sm:font-medium max-sm:py-2 sm:p-4 lg:text-xl rounded-md bg-gray-100">
                         User Settings
                     </span>
 
