@@ -83,7 +83,7 @@ const NoBackground = () => {
             <div className="drawer drawer-end">
                 <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
-                    <img className="fixed h-full w-screen -z-10 brightness-50" src={bgImage} alt="Background Image" />
+                    <img className="fixed w-screen h-screen -z-10 brightness-50 object-cover" src={bgImage} alt="Background Image" />
                     <Header />
                     <Outlet />
                     <Footer />
@@ -91,12 +91,14 @@ const NoBackground = () => {
                 <div className="drawer-side z-30">
                     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 min-h-full max-w-[90vw] bg-base-200 text-base-content">
-                        <div className="mb-2 flex items-center justify-center gap-4 p-4">
-                            <img src="/suitcase.png" alt="brand" className="h-8 w-8" />
-                            <h5>
-                                Menu
-                            </h5>
-                        </div>
+                        <li className='btn-disabled'>
+                            <div className="mb-2 flex items-center justify-center gap-4 p-4">
+                                <img src="/suitcase.png" alt="brand" className="h-8 w-8" />
+                                <p>
+                                    Menu
+                                </p>
+                            </div>
+                        </li>
 
                         {
                             button.map((e) => <li className='mb-2 p-0 rounded-sm' to={e.to} key={e.id}><Anchor className='flex flex-row gap-4 w-full' key={e.id} to={e.to}>{e.title === 'Home' ? buttonIcons.home : buttonIcons.cities}{e.title}</Anchor></li>)
@@ -139,11 +141,12 @@ const NoBackground = () => {
                                 <hr className="my-2 border-blue-gray-50" />
                             </div>
                         }
-                        <h5 className='text-center mt-2'>MyTinerary 2024</h5>
+                        <li className='btn-disabled flex items-center'>
+                            <h5 className='text-center mt-2'>MyTinerary 2024</h5>
+                        </li>
                     </ul>
                 </div>
             </div>
-
         </>
     )
 }
