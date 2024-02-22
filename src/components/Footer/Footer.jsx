@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <>
-      <footer className="backdrop-blur-xl justify-between dark:bg-gray-900 font-bold flex flex-wrap relative footer p-10 bg-base-200 text-base-content">
+      <footer className="backdrop-blur-xl justify-between bg-gray-900 font-bold flex flex-wrap relative footer p-10 text-base-content">
         <div className="max-md:text-xs md:mt-16">
           <span className="footer-title">Services</span>
           <a className="link link-hover">Branding</a>

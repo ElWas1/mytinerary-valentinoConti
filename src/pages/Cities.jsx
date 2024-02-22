@@ -157,7 +157,7 @@ const Cities = () => {
                 </button>
                 <div className='mt-16 flex flex-wrap justify-center gap-4'>
                     {cities?.map((e) => <CitiesCards link={`/cities/${e._id}`} key={e._id} image={e.image} country={e.country} city={e.name} description={e.description} />)}
-                    <h1 className={(cities?.length > 0) ? 'hidden' : 'p-4 rounded-xl max-md:text-2xl max-lg:text-3xl lg:text-4xl block text-center text-red-900 hover:bg-red-500 hover:text-yellow-300 duration-500'}>There are no matching cities with your search.</h1>
+                    <h1 className={(cities?.length > 0) ? 'hidden' : 'p-4 rounded-xl max-md:text-2xl max-lg:text-3xl lg:text-4xl block text-center text-white hover:bg-red-500/40 hover:text-yellow-300 duration-500'}>There are no matching cities with your search.</h1>
                 </div>
             </div>
         </div>

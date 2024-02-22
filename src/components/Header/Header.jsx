@@ -6,11 +6,11 @@ const Navbar = () => {
   const user = useSelector(store => store.user.user)
 
   return (
-    <header className="z-20 relative backdrop-blur-xl dark:bg-gray-900/20">
+    <header className="z-20 relative backdrop-blur-xl bg-gray-900/20">
       <div className="max-w-screen px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex-1 md:flex md:items-center md:gap-12">
-            <Anchor className="text-black dark:text-white" to="/">
+            <Anchor className="text-white" to="/">
               <h1 className='max-[600px]:text-xl text-3xl font-bold'>MyTinerary</h1>
             </Anchor>
           </div>

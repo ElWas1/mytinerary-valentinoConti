@@ -20,7 +20,9 @@ const CityDetails = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(get_user_id(user))
+        if (user) {
+            dispatch(get_user_id(user))
+        }
         dispatch(get_city_by_id(id))
         let query = '?'
         if (id) {
