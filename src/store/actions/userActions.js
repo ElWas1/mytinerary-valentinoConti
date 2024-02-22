@@ -52,7 +52,6 @@ export const user_signup = createAsyncThunk(
             }
 
         } catch (error) {
-            console.log(error);
             Swal.fire(
                 'You have not been registered.',
                 'Please, check that all of the fields are correct.',

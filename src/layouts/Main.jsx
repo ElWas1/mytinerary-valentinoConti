@@ -161,7 +161,7 @@ const Main = () => {
             <div ref={loaderDiv} className="fixed top-0 bottom-0 left-0 right-0 z-50 bg-gray-900 flex flex-col gap-4 items-center justify-center w-full h-full" style={loaderContainerStyles}>
                 <div ref={loader} className='flex flex-col items-center justify-center' style={loaderStyles}>
                     <div className="p-2 mb-8 animate-spin shadow-md shadow-indigo-600 bg-gradient-to-bl from-pink-400 via-purple-700 to-indigo-600 h-24 w-24 aspect-square rounded-full">
-                        <div className="rounded-full h-full w-full bg-slate-100 dark:bg-gray-950 background-blur-md" />
+                        <div className="rounded-full h-full w-full bg-gray-950 background-blur-md" />
                     </div>
                     <img className='max-md:w-[50%] md:w-[30%] mb-4' src="/suitcase.png" alt="Logo" />
                     <p className='text-3xl text-white font-bold'>Loading...</p>

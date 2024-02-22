@@ -13,11 +13,13 @@ const Itinerary = ({
     itineraryId, userId, title, userPhoto, userName, price, duration, activities,
     hashtags, likes, update }) => {
 
-        const user = useSelector((store) => store.user.user?.email)
+    const user = useSelector((store) => store.user.user?.email)
 
-        useEffect(() => {
+    useEffect(() => {
+        if (user) {
             dispatch(get_user_id(user))
-        }, [])
+        }
+    }, [user])
 
     const hideableDiv = useRef(null);
     const hideDivButton = useRef(null);
@@ -72,7 +74,7 @@ const Itinerary = ({
                 </div>
                 <div className='flex flex-col flex-wrap items-center gap-4'>
                     <h3>{hashtags.map((e) => e + ' ')}</h3>
-                    {userId ? <Heart className='w-6 h-6' isActive={liked} onClick={handleUnavailableFeature} inactiveColor="white" animationTrigger="hover" animationScale={1.2} /> : <Heart className='w-6 h-6' isActive={liked} onClick={handleDisabledLikeButton} inactiveColor="white" animationTrigger="hover" animationScale={1.2} /> }
+                    {userId ? <Heart className='w-6 h-6' isActive={liked} onClick={handleUnavailableFeature} inactiveColor="white" animationTrigger="hover" animationScale={1.2} /> : <Heart className='w-6 h-6' isActive={liked} onClick={handleDisabledLikeButton} inactiveColor="white" animationTrigger="hover" animationScale={1.2} />}
                     <h4>{likes + ' Likes'}</h4>
                 </div>
                 <div className='flex flex-col flex-wrap gap-4'>
