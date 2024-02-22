@@ -27,14 +27,11 @@ const AccountActions = () => {
           timer: 4000
         })
       }
-      if (result.value === "f") {
+      if (result.value) {
         Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Your account was deleted.',
-          text: 'We hope to see you again soon!',
-          showConfirmButton: false,
-          timer: 5000
+          title: "Unavailable feature.",
+          text: "This feature is unavailable at the moment. Stay tuned for new ones!",
+          icon: "info"
         })
       }
     });

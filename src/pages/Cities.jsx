@@ -108,7 +108,13 @@ const Cities = () => {
                     navigate('/sign')
                 }
             });
+            return
         }
+        Swal.fire({
+            title: "Unavailable feature.",
+            text: "This feature is unavailable at the moment. Stay tuned for new ones!",
+            icon: "info"
+        })
     }
 
     return (

@@ -1,11 +1,14 @@
-import { useSelector } from "react-redux"
-import { useState, useRef } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { useState, useRef, useEffect } from "react"
+import { change_bg } from '../store/actions/pageActions.js';
 import PublicProfile from "../components/UserSettings/PublicProfile.jsx"
 import Security from "../components/UserSettings/Security.jsx"
 import Accessibility from "../components/UserSettings/Accessibility.jsx"
 import AccountActions from "../components/UserSettings/AccountActions.jsx"
 
 const UserSettings = () => {
+
+    const dispatch = useDispatch()
 
     const user = useSelector(store => store.user.user)
 
@@ -60,6 +63,10 @@ const UserSettings = () => {
         }
         setActiveButton(component)
     }
+
+    useEffect(() => {
+        dispatch(change_bg("/lake3.jpg"))
+    }, [dispatch])
 
     return (
         <div className="flex flex-row justify-center bg-zinc-900">
