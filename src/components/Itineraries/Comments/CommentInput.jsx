@@ -20,7 +20,6 @@ const CommentInput = ({ itineraryId, userId, update }) => {
     }
 
     const handlePostComment = () => {
-        setUpdatedValue(getRandomInt(999999999999999))
         if (commentInputContent.current.value.trim() !== '') {
             const object = {
                 comment: commentInputContent.current.value.trim(),
@@ -29,7 +28,6 @@ const CommentInput = ({ itineraryId, userId, update }) => {
             }
             dispatch(post_comment(object))
             commentInputContent.current.value = ''
-            update(updatedValue)
 
             inputDiv.current.className = "flex flex-row bg-black outline outline-1 outline-red-500 rounded-xl mt-16 w-full p-2 duration-500"
             commentInputContent.current.placeholder = 'Please, wait 10 seconds before commenting again.'
@@ -41,7 +39,10 @@ const CommentInput = ({ itineraryId, userId, update }) => {
                 commentInputContent.current.disabled = false
                 postCommentButton.current.disabled = false
             }, 10000)
-
+            setTimeout(() => {
+                setUpdatedValue(getRandomInt(999999999999999))
+                update(updatedValue)
+            }, 500)
         }
     }
 

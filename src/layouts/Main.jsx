@@ -25,6 +25,14 @@ const Main = () => {
 
     const user = useSelector(store => store.user.user)
 
+    const handleUnavailableFeature = () => {
+        Swal.fire({
+            title: "Unavailable feature.",
+            text: "This feature is unavailable at the moment. Stay tuned for new ones!",
+            icon: "info"
+        })
+    }
+
     const handleSignOutButton = () => {
         Swal.fire({
             title: 'Are you sure that you want to log out?',
@@ -118,9 +126,9 @@ const Main = () => {
 
     const userButtons = [
         { title: 'User Settings', to: '/user/settings', id: 'user_settings' },
-        { title: 'Saved Itineraries', to: '/', id: 'saved_itineraries' },
-        { title: 'Liked Itineraries', to: '/', id: 'liked_itineraries' },
-        { title: 'My Itineraries', to: '/', id: 'my_itineraries' }
+        { title: 'Saved Itineraries', to: null, id: 'saved_itineraries', onClick: handleUnavailableFeature },
+        { title: 'Liked Itineraries', to: null, id: 'liked_itineraries', onClick: handleUnavailableFeature },
+        { title: 'My Itineraries', to: null, id: 'my_itineraries', onClick: handleUnavailableFeature }
     ]
 
     const buttonIcons = {
@@ -203,7 +211,7 @@ const Main = () => {
                             user &&
                             userButtons.map((button) => (
                                 <li className='mb-2 p-0 rounded-sm' key={button.id}>
-                                    <Anchor className='flex flex-row gap-4 w-full' to={button.to} key={button.id}>
+                                    <Anchor className='flex flex-row gap-4 w-full' to={button.to} key={button.id} onClick={button.onClick}>
 
                                         {button.id && buttonIcons[button.id] && buttonIcons[button.id]}
                                         {button.title}

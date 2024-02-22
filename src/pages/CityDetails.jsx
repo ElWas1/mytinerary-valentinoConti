@@ -5,7 +5,7 @@ import { get_city_by_id } from '../store/actions/cityActions.js';
 import { get_itineraries_by_city_id } from '../store/actions/itineraryActions.js';
 import Itinerary from '../components/Itineraries/Itinerary.jsx';
 import { get_user_id } from '../store/actions/userActions.js';
-import { change_bg } from '../store/actions/pageActions.js'
+import { change_bg } from '../store/actions/pageActions.js';
 
 const CityDetails = () => {
 

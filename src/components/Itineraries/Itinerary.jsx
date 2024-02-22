@@ -41,6 +41,14 @@ const Itinerary = ({
         )
     }
 
+    const handleUnavailableFeature = () => {
+        Swal.fire({
+            title: "Unavailable feature.",
+            text: "This feature is unavailable at the moment. Stay tuned for new ones!",
+            icon: "info"
+        })
+    }
+
     const handleHideableDiv = () => {
         if (hideableDiv.current.className === 'hidden') {
             hideableDiv.current.className = 'flex flex-col flex-wrap'
@@ -64,7 +72,7 @@ const Itinerary = ({
                 </div>
                 <div className='flex flex-col flex-wrap items-center gap-4'>
                     <h3>{hashtags.map((e) => e + ' ')}</h3>
-                    {userId ? <Heart className='w-6 h-6' isActive={liked} onClick={() => setLiked(!liked)} inactiveColor="white" animationTrigger="hover" animationScale={1.2} /> : <Heart className='w-6 h-6' isActive={liked} onClick={handleDisabledLikeButton} inactiveColor="white" animationTrigger="hover" animationScale={1.2} /> }
+                    {userId ? <Heart className='w-6 h-6' isActive={liked} onClick={handleUnavailableFeature} inactiveColor="white" animationTrigger="hover" animationScale={1.2} /> : <Heart className='w-6 h-6' isActive={liked} onClick={handleDisabledLikeButton} inactiveColor="white" animationTrigger="hover" animationScale={1.2} /> }
                     <h4>{likes + ' Likes'}</h4>
                 </div>
                 <div className='flex flex-col flex-wrap gap-4'>

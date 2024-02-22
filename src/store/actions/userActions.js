@@ -120,11 +120,12 @@ export const user_google_auth = createAsyncThunk(
             localStorage.setItem('token', data.response.token)
             localStorage.setItem('user', JSON.stringify(data.response.user))
 
-            Swal.fire(
-                'You are Logged In!',
-                `Welcome, ${data.response.user.name}!`,
-                'success'
-            )
+            Swal.fire({
+                title: 'You are Logged In!',
+                text: `Welcome, ${data.response.user.name}!`,
+                icon: 'success',
+                backdrop: '#000'
+            })
 
             return {
                 user: data.response.user,
@@ -248,7 +249,11 @@ export const update_user = createAsyncThunk(
     "update_user",
     async (obj) => {
         try {
-            console.log(obj);
+            Swal.fire({
+                title: "Unavailable feature.",
+                text: "This feature is unavailable at the moment. Stay tuned for new ones!",
+                icon: "info"
+            })
             // const { data } = await axios.put('https://mytinerary-back-valentinoconti.onrender.com/api/auth/signin', obj)
             // localStorage.setItem('token', data.response.token)
             // localStorage.setItem('user', JSON.stringify(data.response.user))
