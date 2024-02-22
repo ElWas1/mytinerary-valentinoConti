@@ -6,7 +6,7 @@ export const user_signin = createAsyncThunk(
     'user_signin',
     async (obj) => {
         try {
-            const { data } = await axios.post('http://localhost:8000/api/auth/signin', obj.data)
+            const { data } = await axios.post('https://mytinerary-back-valentinoconti.onrender.com/api/auth/signin', obj.data)
             localStorage.setItem('token', data.response.token)
             localStorage.setItem('user', JSON.stringify(data.response.user))
 
@@ -40,7 +40,7 @@ export const user_signup = createAsyncThunk(
     'user_signup',
     async (obj) => {
         try {
-            const { data } = await axios.post('http://localhost:8000/api/auth/signup', obj.user)
+            const { data } = await axios.post('https://mytinerary-back-valentinoconti.onrender.com/api/auth/signup', obj.user)
 
             Swal.fire(
                 'You are registered.',
@@ -81,7 +81,7 @@ export const user_renew_token = createAsyncThunk(
     async (obj) => {
         try {
             const configs = { headers: { 'Authorization': `Bearer ${obj}` } }
-            const { data } = await axios.post('http://localhost:8000/api/auth/checkTokenExpiration', null, configs)
+            const { data } = await axios.post('https://mytinerary-back-valentinoconti.onrender.com/api/auth/checkTokenExpiration', null, configs)
 
             localStorage.setItem('token', data.response.token);
         } catch (error) {
@@ -94,7 +94,7 @@ export const user_signout = createAsyncThunk(
     'user_signout',
     async (obj) => {
         try {
-            const token = await axios.post('http://localhost:8000/api/auth/signout', null, { headers: { 'Authorization': `Bearer ${obj}` } })
+            const token = await axios.post('https://mytinerary-back-valentinoconti.onrender.com/api/auth/signout', null, { headers: { 'Authorization': `Bearer ${obj}` } })
             localStorage.clear();
             setTimeout(() => {
                 window.location.reload();
@@ -116,7 +116,7 @@ export const user_google_auth = createAsyncThunk(
     'user_google_auth',
     async (obj) => {
         try {
-            const { data } = await axios.post('http://localhost:8000/api/auth/google', obj)
+            const { data } = await axios.post('https://mytinerary-back-valentinoconti.onrender.com/api/auth/google', obj)
             localStorage.setItem('token', data.response.token)
             localStorage.setItem('user', JSON.stringify(data.response.user))
 
@@ -144,7 +144,7 @@ export const post_comment = createAsyncThunk(
     'post_comment',
     async (obj) => {
         try {
-            const response = await axios.post(`http://localhost:8000/api/itineraries/comment/${obj.itineraryId}`, {
+            const response = await axios.post(`https://mytinerary-back-valentinoconti.onrender.com/api/itineraries/comment/${obj.itineraryId}`, {
                 comment: obj.comment,
                 user: obj.userId,
                 itineraryId: obj.itineraryId
@@ -170,7 +170,7 @@ export const delete_comment = createAsyncThunk(
     'delete_comment',
     async (obj) => {
         try {
-            await axios.delete(`http://localhost:8000/api/itineraries/comment/${obj}`)
+            await axios.delete(`https://mytinerary-back-valentinoconti.onrender.com/api/itineraries/comment/${obj}`)
 
             Swal.fire({
                 position: 'top-end',
@@ -192,7 +192,7 @@ export const get_user_id = createAsyncThunk(
     'get_user_id',
     async (obj) => {
         try {
-            const { data } = await axios.get(`http://localhost:8000/api/users?email=${obj}`)
+            const { data } = await axios.get(`https://mytinerary-back-valentinoconti.onrender.com/api/users?email=${obj}`)
 
             return {
                 userId: data.users[0]._id.toString(),
@@ -230,7 +230,7 @@ export const get_user_by_username = createAsyncThunk(
     'get_user_by_username',
     async (obj) => {
         try {
-            const { data } = await axios.get(`http://localhost:8000/api/users?username=${obj}`)
+            const { data } = await axios.get(`https://mytinerary-back-valentinoconti.onrender.com/api/users?username=${obj}`)
 
             return {
                 user: data.users[0]
@@ -249,7 +249,7 @@ export const update_user = createAsyncThunk(
     async (obj) => {
         try {
             console.log(obj);
-            // const { data } = await axios.put('http://localhost:8000/api/auth/signin', obj)
+            // const { data } = await axios.put('https://mytinerary-back-valentinoconti.onrender.com/api/auth/signin', obj)
             // localStorage.setItem('token', data.response.token)
             // localStorage.setItem('user', JSON.stringify(data.response.user))
 

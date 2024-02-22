@@ -16,7 +16,7 @@ function App() {
   let dispatch = useDispatch();
 
   useEffect(() => {
-    let url = `http://localhost:8000/api/auth/token`
+    let url = `https://mytinerary-back-valentinoconti.onrender.com/api/auth/token`
     const user = localStorage.getItem('user')
     const token = localStorage.getItem('token')
     const configs = { headers: { 'Authorization': `Bearer ${token}` } }

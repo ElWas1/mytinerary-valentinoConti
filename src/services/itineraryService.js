@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const itinerariesQueries = axios.create( {
-    baseURL: `http://localhost:8000/api/itineraries`,
+    baseURL: `https://mytinerary-back-valentinoconti.onrender.com/api/itineraries`,
 } )
 
 export const getAllItineraries = async (cityId="") => {

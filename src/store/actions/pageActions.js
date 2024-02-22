@@ -30,4 +30,4 @@ export const change_signup_image = createAction(
                 signUpImage: img
             }
         }
-    })
+})

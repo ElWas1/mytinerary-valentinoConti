@@ -29,7 +29,7 @@ export const get_itineraries_by_city_id = createAsyncThunk('get_itineraries_by_c
 export const get_comments = createAsyncThunk('get_comments', async (obj) => {
     try {
 
-        const response = await axios.get(`http://localhost:8000/api/itineraries/comment/${obj}`)
+        const response = await axios.get(`https://mytinerary-back-valentinoconti.onrender.com/api/itineraries/comment/${obj}`)
 
         return {
             comments: response.data.commentsArray.map((e) => e),
