@@ -243,3 +243,35 @@ export const get_user_by_username = createAsyncThunk(
         }
     }
 )
+
+export const update_user = createAsyncThunk(
+    "update_user",
+    async (obj) => {
+        try {
+            console.log(obj);
+            // const { data } = await axios.put('http://localhost:8000/api/auth/signin', obj)
+            // localStorage.setItem('token', data.response.token)
+            // localStorage.setItem('user', JSON.stringify(data.response.user))
+
+            // Swal.fire({
+            //     title: 'You are Logged In!',
+            //     text: `Welcome, ${data.response.user.name}!`,
+            //     icon: 'success',
+            //     backdrop: '#000'
+            // })
+
+            // return {
+            //     user: data.response.user,
+            //     token: data.response.token
+            //}
+
+        } catch (error) {
+            console.log(error);
+            Swal.fire(
+                'Settings could not be updated.',
+                'Please, check the credentials that you have provided.',
+                'error'
+            )
+        }
+    }
+)

@@ -36,7 +36,7 @@ const router = createBrowserRouter([
     path: '/sign',
     element: <NoBackground />,
     children: [
-      { path: '/sign', element: (<ProtectedRoute allow='non-user' path='/'><Sign /></ProtectedRoute>) }
+      { path: '/sign', element: (<ProtectedRoute allow={'non-user'} path='/'><Sign /></ProtectedRoute>) }
     ],
     errorElement: <ErrorPage />
   },
