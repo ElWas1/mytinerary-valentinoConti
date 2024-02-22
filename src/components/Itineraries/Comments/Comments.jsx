@@ -20,13 +20,15 @@ const Comments = ({ itineraryId, userId, cityId, update }) => {
 
   useEffect(() => {
     try {
-      dispatch(get_user_id(user))
+      if (user) {
+        dispatch(get_user_id(user))
+      }
       dispatch(get_comments(itineraryId))
       let query = '?'
-        if (cityId) {
-            query += 'cityId=' + cityId
-            dispatch(get_itineraries_by_city_id(query))
-        }
+      if (cityId) {
+        query += 'cityId=' + cityId
+        dispatch(get_itineraries_by_city_id(query))
+      }
     } catch (error) {
       console.log(error);
     }

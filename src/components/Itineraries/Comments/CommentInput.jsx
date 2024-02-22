@@ -42,7 +42,7 @@ const CommentInput = ({ itineraryId, userId, update }) => {
             setTimeout(() => {
                 setUpdatedValue(getRandomInt(999999999999999))
                 update(updatedValue)
-            }, 500)
+            }, 300)
         }
     }
 
