@@ -126,9 +126,9 @@ const Main = () => {
 
     const userButtons = [
         { title: 'User Settings', to: '/user/settings', id: 'user_settings' },
-        { title: 'Saved Itineraries', to: null, id: 'saved_itineraries', onClick: handleUnavailableFeature },
-        { title: 'Liked Itineraries', to: null, id: 'liked_itineraries', onClick: handleUnavailableFeature },
-        { title: 'My Itineraries', to: null, id: 'my_itineraries', onClick: handleUnavailableFeature }
+        { title: 'Saved Itineraries', to: "#", id: 'saved_itineraries', onClick: handleUnavailableFeature },
+        { title: 'Liked Itineraries', to: "#", id: 'liked_itineraries', onClick: handleUnavailableFeature },
+        { title: 'My Itineraries', to: "#", id: 'my_itineraries', onClick: handleUnavailableFeature }
     ]
 
     const buttonIcons = {
@@ -163,7 +163,7 @@ const Main = () => {
                     <div className="p-2 mb-8 animate-spin shadow-md shadow-indigo-600 bg-gradient-to-bl from-pink-400 via-purple-700 to-indigo-600 h-24 w-24 aspect-square rounded-full">
                         <div className="rounded-full h-full w-full bg-gray-950 background-blur-md" />
                     </div>
-                    <img className='max-md:w-[50%] md:w-[30%] mb-4' src="/suitcase.png" alt="Logo" />
+                    <img className='max-md:w-[50%] md:w-[30%] mb-4' src="/suitcase.webp" alt="Logo" />
                     <p className='text-3xl text-white font-bold'>Loading...</p>
                 </div>
             </div>
@@ -171,23 +171,23 @@ const Main = () => {
                 <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     <div id='slide'>
-                        <img className={imageClass} src="/boat.jpg" alt="Boat" />
-                        <img className={imageClass} src="/city.jpg" alt="City" />
-                        <img className={imageClass} src="/lake1.jpg" alt="Lake" />
-                        <img className={imageClass} src="/mountains.jpg" alt="Mountains" />
-                        <img className={imageClass} src="/road.jpg" alt="Road" />
+                        <img className={imageClass} src="/boat.webp" alt="Boat" />
+                        <img className={imageClass} src="/city.webp" alt="City" />
+                        <img className={imageClass} src="/lake1.webp" alt="Lake" />
+                        <img className={imageClass} src="/mountains.webp" alt="Mountains" />
+                        <img className={imageClass} src="/road.webp" alt="Road" />
                         <img className={imageClass} src="/beach.avif" alt="Beach" />
-                        <img className={imageClass} src="/city2.jpg" alt="City 2" />
-                        <img className={imageClass} src="/boat2.jpg" alt="Boat 2" />
-                        <img className={imageClass} src="/bridge.jpg" alt="Bridge" />
-                        <img className={imageClass} src="/river2.jpg" alt="River 2" />
-                        <img className={imageClass} src="/castle.jpg" alt="Castle" />
-                        <img className={imageClass} src="/lake2.jpg" alt="Lake 2" />
-                        <img className={imageClass} src="/city3.jpg" alt="City 3" />
-                        <img className={imageClass} src="/lake3.jpg" alt="Lake 3" />
-                        <img className={imageClass} src="/mountains2.jpg" alt="Mountains 2" />
-                        <img className={imageClass} src="/river.jpg" alt="River" />
-                        <img className={imageClass} src="/snow.jpg" alt="Snow" />
+                        <img className={imageClass} src="/city2.webp" alt="City 2" />
+                        <img className={imageClass} src="/boat2.webp" alt="Boat 2" />
+                        <img className={imageClass} src="/bridge.webp" alt="Bridge" />
+                        <img className={imageClass} src="/river2.webp" alt="River 2" />
+                        <img className={imageClass} src="/castle.webp" alt="Castle" />
+                        <img className={imageClass} src="/lake2.webp" alt="Lake 2" />
+                        <img className={imageClass} src="/city3.webp" alt="City 3" />
+                        <img className={imageClass} src="/lake3.webp" alt="Lake 3" />
+                        <img className={imageClass} src="/mountains2.webp" alt="Mountains 2" />
+                        <img className={imageClass} src="/river.webp" alt="River" />
+                        <img className={imageClass} src="/snow.webp" alt="Snow" />
                     </div>
                     <Header />
                     <Outlet />
@@ -198,7 +198,7 @@ const Main = () => {
                     <ul className="menu p-4 w-80 min-h-full max-w-[90vw] bg-base-200 text-base-content">
                         <li className='btn-disabled bg-transparent'>
                             <div className="mb-2 flex items-center justify-center gap-4 p-4">
-                                <img src="/suitcase.png" alt="brand" className="h-8 w-8" />
+                                <img src="/suitcase.webp" alt="brand" className="h-8 w-8" />
                                 <p>
                                     Menu
                                 </p>
@@ -208,7 +208,6 @@ const Main = () => {
                         {
                             button.map((e) => <li className='mb-2 p-0 rounded-sm' to={e.to} key={e.id}><Anchor className='flex flex-row gap-4 w-full' key={e.id} to={e.to}>{e.title === 'Home' ? buttonIcons.home : buttonIcons.cities}{e.title}</Anchor></li>)
                         }
-                            <hr className="my-2 border-blue-gray-50" />
                         {
                             user &&
                             userButtons.map((button) => (
@@ -220,11 +219,6 @@ const Main = () => {
                                     </Anchor>
                                 </li>
                             ))
-                        }
-                        {
-                            user ?
-                                <hr className="my-2 border-blue-gray-50" />
-                                : null
                         }
                         <li className='p-0 rounded-sm'>
                             {user ?
@@ -238,7 +232,6 @@ const Main = () => {
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>Sign In</Anchor>}
                         </li>
-                            <hr className="my-2 border-blue-gray-50" />
                         {
                             user && <div className='btn-disabled'>
                                 <div className='flex flex-row justify-center'>

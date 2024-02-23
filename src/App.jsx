@@ -16,7 +16,7 @@ function App() {
   let dispatch = useDispatch();
 
   useEffect(() => {
-    let url = `https://mytinerary-back-valentinoconti.onrender.com/api/auth/token`
+    let url = import.meta.env.VITE_GET_USER_TOKEN_API_URL
     const user = localStorage.getItem('user')
     const token = localStorage.getItem('token')
     const configs = { headers: { 'Authorization': `Bearer ${token}` } }

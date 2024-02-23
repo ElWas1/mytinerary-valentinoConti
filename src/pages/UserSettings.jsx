@@ -65,7 +65,7 @@ const UserSettings = () => {
     }
 
     useEffect(() => {
-        dispatch(change_bg("/lake3.jpg"))
+        dispatch(change_bg("/lake3.webp"))
     }, [dispatch])
 
     return (

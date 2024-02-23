@@ -1,5 +1,5 @@
 const ItineraryPrice = ({ price }) => {
-    const imgSrc = '/cash.png';
+    const imgSrc = '/cash.webp';
     const images = [];
 
     for (let i = 0; i < price; i++) {

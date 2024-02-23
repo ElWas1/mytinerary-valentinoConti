@@ -10,7 +10,7 @@ const ErrorPage = () => {
       <p className="max-[600px]:text-xs text-red-700">
         Error: <i className="text-gray-400">{error.statusText || error.message}</i>
       </p>
-      <img className="w-1/2 mt-24" src="/planeErrorPage.png" alt="Plane image" />
+      <img className="w-1/2 mt-24" src="/planeErrorPage.webp" alt="Plane image" />
     </div>
   )
 }

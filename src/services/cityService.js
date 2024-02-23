@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const citiesQueries = axios.create( {
-    baseURL: 'https://mytinerary-back-valentinoconti.onrender.com/api/cities',
+    baseURL: import.meta.env.VITE_GET_CITIES_API_URL,
 } )
 
 export const getAllCities = async (queryParams="") => {
