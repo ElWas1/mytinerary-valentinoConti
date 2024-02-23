@@ -30,7 +30,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="">
-          <img className="w-[10vw]" src='/suitcase.png' alt="MyTinerary Logo" />
+          <img className="w-[10vw]" src='/suitcase.webp' alt="MyTinerary Logo" />
           <h2 className="mb-2 max-md:text-lg text-2xl font-bold">MyTinerary</h2>
           <p className="text-gray-400">Always bringing you closer to your next unforgettable destination.</p>
         </div>

@@ -28,9 +28,9 @@ const NoBackground = () => {
 
     const userButtons = [
         { title: 'User Settings', to: '/user/settings', id: 'user_settings' },
-        { title: 'Saved Itineraries', to: null, id: 'saved_itineraries', onClick: handleUnavailableFeature },
-        { title: 'Liked Itineraries', to: null, id: 'liked_itineraries', onClick: handleUnavailableFeature },
-        { title: 'My Itineraries', to: null, id: 'my_itineraries', onClick: handleUnavailableFeature }
+        { title: 'Saved Itineraries', to: "#", id: 'saved_itineraries', onClick: handleUnavailableFeature },
+        { title: 'Liked Itineraries', to: "#", id: 'liked_itineraries', onClick: handleUnavailableFeature },
+        { title: 'My Itineraries', to: "#", id: 'my_itineraries', onClick: handleUnavailableFeature }
     ]
 
     const buttonIcons = {
@@ -93,7 +93,7 @@ const NoBackground = () => {
                     <ul className="menu p-4 w-80 min-h-full max-w-[90vw] bg-base-200 text-base-content">
                         <li className='btn-disabled'>
                             <div className="mb-2 flex items-center justify-center gap-4 p-4">
-                                <img src="/suitcase.png" alt="brand" className="h-8 w-8" />
+                                <img src="/suitcase.webp" alt="brand" className="h-8 w-8" />
                                 <p>
                                     Menu
                                 </p>
@@ -102,11 +102,6 @@ const NoBackground = () => {
 
                         {
                             button.map((e) => <li className='mb-2 p-0 rounded-sm' to={e.to} key={e.id}><Anchor className='flex flex-row gap-4 w-full' key={e.id} to={e.to}>{e.title === 'Home' ? buttonIcons.home : buttonIcons.cities}{e.title}</Anchor></li>)
-                        }
-                        {
-                            user ?
-                                <hr className="my-2 border-blue-gray-50" />
-                                : null
                         }
                         {
                             user &&
@@ -119,7 +114,6 @@ const NoBackground = () => {
                                 </li>
                             ))
                         }
-                        <hr className="my-2 border-blue-gray-50" />
                         <li className='p-0 rounded-sm'>
                             {user ?
                                 <button onClick={handleSignOutButton} className='flex justify-center w-full bg-red-500 hover:bg-red-950' to='/signout'>
@@ -132,17 +126,15 @@ const NoBackground = () => {
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>Sign In</Anchor>}
                         </li>
-                        <hr className="my-2 border-blue-gray-50" />
                         {
-                            user && <div>
+                            user && <li className='btn-disabled'>
                                 <div className='flex flex-row justify-center'>
                                     <p className='text-lg'>Signed in as: <span className={user.role === "admin" ? 'text-lg text-red-500 font-medium' : 'text-lg font-medium'}>{user.name}</span></p>
                                 </div>
-                                <hr className="my-2 border-blue-gray-50" />
-                            </div>
+                            </li>
                         }
                         <li className='btn-disabled flex items-center'>
-                            <h5 className='text-center mt-2'>MyTinerary 2024</h5>
+                            <p className='text-center mt-2'>MyTinerary 2024</p>
                         </li>
                     </ul>
                 </div>

@@ -14,7 +14,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     dispatch(get_user_by_username(username))
-    dispatch(change_bg("/snow.jpg"))
+    dispatch(change_bg("/snow.webp"))
   }, [username])
 
   const handleChangeProfilePhoto = () => {

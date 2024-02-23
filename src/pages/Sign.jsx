@@ -26,7 +26,7 @@ const Sign = () => {
     }
 
     useEffect(() => {
-        dispatch(change_bg("/city3.jpg"))
+        dispatch(change_bg("/city3.webp"))
     }, [])
 
     return (

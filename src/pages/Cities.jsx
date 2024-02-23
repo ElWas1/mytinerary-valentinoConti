@@ -41,12 +41,7 @@ const Cities = () => {
                     }
                 };
                 img.onerror = () => {
-                    console.log(`The image ${url} is not compatible.`);
                     completed++;
-
-                    if (completed === urls.length) {
-                        reject(new Error('No compatible images found.'));
-                    }
                 };
                 img.src = url;
             }
@@ -57,7 +52,7 @@ const Cities = () => {
 
         const imageUrls = [
             '/beach.avif',
-            '/beach.jpg'
+            '/beach.webp'
         ];
 
         dispatch(get_cities())
@@ -134,7 +129,7 @@ const Cities = () => {
                     />
                     <button
                         onClick={handleCitySearch}
-                        className='max-md:p-2 max-md:text-sm p-3 max-md:ml-0 ml-4 bg-slate-500 rounded-xl hover:bg-slate-700 duration-500'
+                        className='max-md:p-2 max-md:text-sm p-3 max-md:ml-0 ml-4 bg-black rounded-xl hover:bg-gray-800 duration-500'
                         id='search'
                         type="button">
                         Search
@@ -156,7 +151,7 @@ const Cities = () => {
                     Clear search
                 </button>
                 <div className='mt-16 flex flex-wrap justify-center gap-4'>
-                    {cities?.map((e) => <CitiesCards link={`/cities/${e._id}`} key={e._id} image={e.image} country={e.country} city={e.name} description={e.description} />)}
+                    {cities?.map((e) => <CitiesCards link={`/cities/${e._id}`} key={e._id} image={e.image} imageAlt={e.name} country={e.country} city={e.name} description={e.description} />)}
                     <h1 className={(cities?.length > 0) ? 'hidden' : 'p-4 rounded-xl max-md:text-2xl max-lg:text-3xl lg:text-4xl block text-center text-white hover:bg-red-500/40 hover:text-yellow-300 duration-500'}>There are no matching cities with your search.</h1>
                 </div>
             </div>

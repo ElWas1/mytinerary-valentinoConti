@@ -7,7 +7,7 @@ const CitiesCards = ({ image, imageAlt, country, city, description, link }) => {
                 <img
                     alt={imageAlt}
                     src={image}
-                    className="rounded-xl absolute inset-0 h-full w-full opacity-75 transition-opacity group-hover:opacity-50"
+                    className="object-cover rounded-xl absolute inset-0 h-full w-full opacity-75 transition-opacity group-hover:opacity-50"
                 />
 
                 <div className="max-md:w-[80vw] md:w-[44vw] lg:w-[45vw] relative p-4 sm:p-6 lg:p-8">
