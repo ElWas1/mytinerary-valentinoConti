@@ -61,7 +61,7 @@ const Main = () => {
         }
 
         const vanishLoader = loading ? setTimeout(() => {
-            dispatch(page_is_loading());
+            dispatch(page_is_loading(false));
             contentRef.current.className = "drawer drawer-end"
             parentDiv.current.className = ""
         }, 2000) : contentRef.current.className = "drawer drawer-end"
@@ -220,7 +220,7 @@ const Main = () => {
                                 </li>
                             ))
                         }
-                        <li className='p-0 rounded-sm'>
+                        <li className='p-0 rounded-sm my-4'>
                             {user ?
                                 <button onClick={handleSignOutButton} className='flex justify-center w-full bg-red-500 hover:bg-red-900 my-2' to='/signout'>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -233,12 +233,11 @@ const Main = () => {
                                     </svg>Sign In</Anchor>}
                         </li>
                         {
-                            user && <div className='btn-disabled'>
+                            user && <li className='btn-disabled'>
                                 <div className='flex flex-row justify-center'>
                                     <p className='text-lg'>Signed in as: <span className='text-lg font-medium'>{user.name}</span></p>
                                 </div>
-                                <hr className="my-2 border-blue-gray-50" />
-                            </div>
+                            </li>
                         }
                         <li className='btn-disabled flex items-center'>
                             <p className='text-center mt-2'>MyTinerary 2024</p>

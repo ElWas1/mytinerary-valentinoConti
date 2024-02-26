@@ -114,7 +114,7 @@ const NoBackground = () => {
                                 </li>
                             ))
                         }
-                        <li className='p-0 rounded-sm'>
+                        <li className='p-0 rounded-sm my-4'>
                             {user ?
                                 <button onClick={handleSignOutButton} className='flex justify-center w-full bg-red-500 hover:bg-red-950' to='/signout'>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

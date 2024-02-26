@@ -16,10 +16,11 @@ const Cities = () => {
 
     const cities = useSelector((store) => store.city.cities)
 
+    const citiesLoading = useSelector(store => store.city.loading)
+
     const cityInput = useRef(null)
     const addItineraryButton = useRef(null)
     const clearButton = useRef(null)
-
 
     function checkImageCompatibility(urls) {
         return new Promise((resolve, reject) => {
@@ -152,7 +153,12 @@ const Cities = () => {
                 </button>
                 <div className='mt-16 flex flex-wrap justify-center gap-4'>
                     {cities?.map((e) => <CitiesCards link={`/cities/${e._id}`} key={e._id} image={e.image} imageAlt={e.name} country={e.country} city={e.name} description={e.description} />)}
-                    <h1 className={(cities?.length > 0) ? 'hidden' : 'p-4 rounded-xl max-md:text-2xl max-lg:text-3xl lg:text-4xl block text-center text-white hover:bg-red-500/40 hover:text-yellow-300 duration-500'}>There are no matching cities with your search.</h1>
+                    <div className='flex flex-col justify-center items-center mt-8 gap-4'>
+                        <div className={citiesLoading === true ? 'loading' : 'hidden'} />
+                        <p className={citiesLoading === true ? 'text-white text-lg' : 'hidden'}>If this process takes 10+ seconds, the database is probably reactivating itself due to inactivity, it should be resolved in less than 1 minute. Sorry for the inconvenient and thanks for your patience.</p>
+                        <p className={citiesLoading === false && !(cities?.length > 0) ? 'p-4 rounded-xl max-md:text-2xl max-lg:text-3xl lg:text-4xl block text-center text-white hover:bg-red-500/40 hover:text-yellow-300 duration-500' : 'hidden'}>No cities could be retrieved, please check your internet connection.</p>
+                        <h1 className={(cities?.length > 0 || !(citiesLoading && cities?.length > 0)) ? 'hidden' : 'p-4 rounded-xl max-md:text-2xl max-lg:text-3xl lg:text-4xl block text-center text-white hover:bg-red-500/40 hover:text-yellow-300 duration-500'}>There are no matching cities with your search.</h1>
+                    </div>
                 </div>
             </div>
         </div>
