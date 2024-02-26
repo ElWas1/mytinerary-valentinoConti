@@ -74,7 +74,7 @@ const FileUploader = () => {
 
                 if (file) {
                     try {
-                        const storageRef = ref(storage, 'files_folder/' + crypto.randomUUID());
+                        const storageRef = ref(storage, 'users_pfp/' + crypto.randomUUID());
                         await uploadBytes(storageRef, file);
                         setStorageRef(storageRef);
                     } catch (error) {

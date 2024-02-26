@@ -1,6 +1,10 @@
-import Swal from "sweetalert2"
+import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
+import { delete_user } from "../../store/actions/userActions";
 
-const AccountActions = () => {
+const AccountActions = ({ id, email }) => {
+
+  const dispatch = useDispatch()
 
   const handleDeleteAccount = () => {
     Swal.fire({
@@ -27,13 +31,18 @@ const AccountActions = () => {
           timer: 4000
         })
       }
-      if (result.value) {
-        Swal.fire({
-          title: "Unavailable feature.",
-          text: "This feature is unavailable at the moment. Stay tuned for new ones!",
-          icon: "info"
-        })
+      if (result.value.length >= 8) {
+        dispatch(delete_user({ id: id, email: email, password: result.value }))
+        return
       }
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Invalid password.',
+        text: 'A minimum of 8 characters is required.',
+        showConfirmButton: false,
+        timer: 4000
+      })
     });
   }
 

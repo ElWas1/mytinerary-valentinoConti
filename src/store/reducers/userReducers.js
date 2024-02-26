@@ -1,9 +1,20 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { user_signin, user_signup, user_token, user_google_auth, post_comment, get_user_id, get_countries, get_user_by_username } from '../actions/userActions.js';
+import {
+    user_signin,
+    user_signup,
+    user_token,
+    user_google_auth,
+    post_comment,
+    get_user_id,
+    get_countries,
+    get_user_by_username,
+    get_own_id
+} from '../actions/userActions.js';
 
 const initialState = {
     user: null,
     token: null,
+    ownId: null,
     comment: '',
     userId: null,
     countriesList: [],
@@ -60,6 +71,12 @@ const userReducer = createReducer(
             return {
                 ...state,
                 visitedUser: action.payload.user
+            }
+        })
+        .addCase(get_own_id.fulfilled, (state, action) => {
+            return {
+                ...state,
+                ownId: action.payload.ownId
             }
         })
 )

@@ -5,16 +5,19 @@ import PublicProfile from "../components/UserSettings/PublicProfile.jsx"
 import Security from "../components/UserSettings/Security.jsx"
 import Accessibility from "../components/UserSettings/Accessibility.jsx"
 import AccountActions from "../components/UserSettings/AccountActions.jsx"
+import { get_own_id } from "../store/actions/userActions.js";
 
 const UserSettings = () => {
 
     const dispatch = useDispatch()
 
-    const user = useSelector(store => store.user.user)
+    const email = useSelector(store => store.user.user.email)
+
+    const id = useSelector(store => store.user.ownId)
 
     const sideBar = useRef(null)
 
-    const [component, setComponent] = useState(<PublicProfile />)
+    const [component, setComponent] = useState(<PublicProfile id={id} email={email} />)
 
     const [activeButton, setActiveButton] = useState("public_profile")
 
@@ -47,25 +50,26 @@ const UserSettings = () => {
     const handleChangeComponent = (component) => {
         switch (component) {
             case "public_profile":
-                setComponent(<PublicProfile />)
+                setComponent(<PublicProfile id={id} email={email} />)
                 break
             case "security":
-                setComponent(<Security />)
+                setComponent(<Security id={id} email={email} />)
                 break
             case "accessibility":
-                setComponent(<Accessibility />)
+                setComponent(<Accessibility id={id} email={email} />)
                 break
             case "account_actions":
-                setComponent(<AccountActions />)
+                setComponent(<AccountActions id={id} email={email} />)
                 break
             default:
-                setComponent(<PublicProfile />)
+                setComponent(<PublicProfile id={id} email={email} />)
         }
         setActiveButton(component)
     }
 
     useEffect(() => {
         dispatch(change_bg("/lake3.webp"))
+        dispatch(get_own_id(email))
     }, [dispatch])
 
     return (
