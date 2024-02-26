@@ -23,10 +23,9 @@ export const user_signin = createAsyncThunk(
             }
 
         } catch (error) {
-            console.log(error);
             Swal.fire(
-                'You could not Sign In.',
-                'Please, check the credentials that you have provided.',
+                'You could not sign in.',
+                `${error.response.data.message}`,
                 'error'
             )
             return {
@@ -244,36 +243,81 @@ export const get_user_by_username = createAsyncThunk(
     }
 )
 
-export const update_user = createAsyncThunk(
-    "update_user",
+export const get_own_id = createAsyncThunk(
+    "get_own_id",
     async (obj) => {
         try {
-            Swal.fire({
-                title: "Unavailable feature.",
-                text: "This feature is unavailable at the moment. Stay tuned for new ones!",
-                icon: "info"
-            })
-            // const { data } = await axios.put(import.meta.env.VITE_SIGN_IN_API_URL, obj)
-            // localStorage.setItem('token', data.response.token)
-            // localStorage.setItem('user', JSON.stringify(data.response.user))
+            const { data } = await axios.get(import.meta.env.VITE_GET_USER_ID_API_URL + obj)
 
-            // Swal.fire({
-            //     title: 'You are Logged In!',
-            //     text: `Welcome, ${data.response.user.name}!`,
-            //     icon: 'success',
-            //     backdrop: '#000'
-            // })
-
-            // return {
-            //     user: data.response.user,
-            //     token: data.response.token
-            //}
+            return {
+                ownId: data.users[0]._id.toString()
+            }
 
         } catch (error) {
             console.log(error);
             Swal.fire(
                 'Settings could not be updated.',
                 'Please, check the credentials that you have provided.',
+                'error'
+            )
+        }
+    }
+)
+
+export const update_user = createAsyncThunk(
+    "update_user",
+    async (obj) => {
+        try {
+
+            await axios.put(import.meta.env.VITE_UPDATE_USER_API_URL + obj.id, obj)
+
+            Swal.fire({
+                title: 'Info has been updated.',
+                icon: 'success',
+                timer: 5000
+            })
+
+        } catch (error) {
+            Swal.fire(
+                'Settings could not be updated.',
+                `${error.response.data.message}`,
+                'error'
+            )
+        }
+    }
+)
+
+export const delete_user = createAsyncThunk(
+    "delete_user",
+    async (obj) => {
+        try {
+            if (!(obj.id || obj.email || obj.password)) {
+                return Swal.fire(
+                    'There has ocurred an error.',
+                    'Please, try again later.',
+                    'error'
+                )
+            }
+            await axios.delete(import.meta.env.VITE_DELETE_USER_API_URL + obj.id, { data: obj })
+
+            localStorage.clear();
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 5000);
+
+            Swal.fire({
+                title: 'Your account has been deleted.',
+                text: 'We hope to see you again soon!',
+                icon: 'success',
+                timer: 5000
+            })
+
+        } catch (error) {
+            console.error(error);
+            Swal.fire(
+                'Your account could not be deleted.',
+                `${error.response.data.message}`,
                 'error'
             )
         }
