@@ -2,13 +2,16 @@ import SignIn from '../components/Sign/SignIn/SignIn.jsx';
 import SignUp from '../components/Sign/SignUp/SignUp.jsx';
 
 import { useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import GoogleAuth from '../components/Sign/GoogleAuth.jsx';
 import { change_bg } from '../store/actions/pageActions.js';
 
 const Sign = () => {
 
     const dispatch = useDispatch()
+
+    const dbLoading = useSelector(store => store.user.loading)
+    const dbRejected = useSelector(store => store.user.rejected)
 
     const signIn = useRef(null);
     const signUp = useRef(null)
@@ -38,11 +41,16 @@ const Sign = () => {
                     <button onClick={handleChangeSignMethod} className="self-center p-2 bg-white w-[80%]">Sign Up</button>
                 </div>
                 <div className='hidden' ref={signUp}>
-                {localStorage.getItem('token') ? null : <SignUp />}
+                    {localStorage.getItem('token') ? null : <SignUp />}
                     <h1 className='self-center text-white'>Already have an account?</h1>
                     <button onClick={handleChangeSignMethod} className="self-center p-2 bg-white w-[80%] max-md:mb-8">Sign In</button>
                 </div>
                 {localStorage.getItem('token') ? null : <GoogleAuth />}
+            </div>
+            <div className={dbLoading === true || dbRejected === true ? 'flex flex-col justify-center items-center mb-8 gap-4 rounded-xl' : 'hidden'}>
+                <div className={dbLoading === true ? 'loading' : 'hidden'} />
+                <p className={dbLoading === true ? 'text-white text-lg' : 'hidden'}>Loading, please wait...</p>
+                <p className={dbLoading === false && dbRejected === true ? 'text-red-500 text-lg bg-black p-4 rounded-xl' : 'hidden'}>The connection to the database has been refused. Check your internet connection or try again later.</p>
             </div>
         </div>
     )
