@@ -53,7 +53,7 @@ export const user_signup = createAsyncThunk(
         } catch (error) {
             Swal.fire(
                 'You have not been registered.',
-                'Please, check that all of the fields are correct.',
+                `${error.response.data.message}`,
                 'error'
             )
             return {
@@ -127,13 +127,14 @@ export const user_google_auth = createAsyncThunk(
 
             return {
                 user: data.response.user,
-                token: data.response.token
+                token: data.response.token,
+                rejected: false
             }
 
         } catch (error) {
-            console.log(error);
             return {
-                user: null
+                user: null,
+                rejected: true
             }
         }
     }

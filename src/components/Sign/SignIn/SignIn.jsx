@@ -36,8 +36,9 @@ const SignIn = () => {
         <div className="flex flex-col items-center gap-4 bg-transparent text-black max-md:p-3 md:p-8 max-md:text-xl md:text-3xl rounded-xl">
             <h1 className='self-center text-white text-4xl mb-8'>Sign In</h1>
             <form className="flex flex-col gap-4" onSubmit={handleSignIn} action="">
-                <input className={inputClassName} autoComplete="off" placeholder="E-mail" onInput={handleInput} type="text" name='email' />
-                <input className={inputClassName} autoComplete="off" placeholder="Password" onInput={handleInput} type="password" name='password' />
+                <p className="text-white text-sm">* Indicates a required field.</p>
+                <input className={inputClassName} autoComplete="off" placeholder="E-mail *" onInput={handleInput} type="text" name='email' />
+                <input className={inputClassName} autoComplete="off" placeholder="Password *" onInput={handleInput} type="password" name='password' />
                 <button className="bg-white p-3 rounded-xl text-lg" type="submit">Submit</button>
             </form>
         </div>

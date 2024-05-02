@@ -104,14 +104,14 @@ const FileUploader = () => {
     }, [handleFileUpload]);
 
     return (
-        <div className='flex flex-col items-center justify-center gap-4 w-full'>
-            <h2 className='text-white text-xl rounded-lg max-md:text-xs'>Upload profile photo</h2>
+        <div className='flex flex-col justify-center gap-4 w-full'>
+            <h2 className='text-white text-lg rounded-lg max-md:text-xs'>Upload profile photo (Optional)</h2>
             <input className='bg-gray-100 p-2 text-xl rounded-lg max-md:text-xs' type="file" onChange={handleFileUpload} />
-            <p className='text-gray-400 text-xl rounded-lg max-md:text-xs text-center'>Max. file size: 500 KB, image types allowed: image/jpeg, image/webp, image/png</p>
+            <p className='text-gray-400 text-sm rounded-lg max-md:text-xs text-center'>Max. file size: 500 KB, image types allowed: image/jpeg, image/webp, image/png</p>
             {imageUrl ? <p className='text-white text-xl rounded-lg max-md:text-xs text-center'>Image preview</p> : null}
-            {imageUrl && <img className='w-12 rounded-full bg-white' src={imageUrl} alt="Imagen desde Cloud Storage" />}
-            {imageUrl && <img className='w-24 rounded-full bg-white' src={imageUrl} alt="Imagen desde Cloud Storage" />}
-            {imageUrl && <img className='w-36 rounded-full bg-white' src={imageUrl} alt="Imagen desde Cloud Storage" />}
+            {imageUrl && <img className='w-12 rounded-full bg-white' src={imageUrl} alt="Profile photo" />}
+            {imageUrl && <img className='w-24 rounded-full bg-white' src={imageUrl} alt="Profile photo" />}
+            {imageUrl && <img className='w-36 rounded-full bg-white' src={imageUrl} alt="Profile photo" />}
         </div>
     );
 }

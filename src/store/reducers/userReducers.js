@@ -18,7 +18,9 @@ const initialState = {
     comment: '',
     userId: null,
     countriesList: [],
-    visitedUser: {}
+    visitedUser: {},
+    loading: null,
+    rejected: null
 }
 
 const userReducer = createReducer(
@@ -28,13 +30,41 @@ const userReducer = createReducer(
             return {
                 ...state,
                 user: action.payload.user,
-                token: action.payload.token
+                token: action.payload.token,
+                loading: false
+            }
+        })
+        .addCase(user_signin.pending, (state) => {
+            return {
+                ...state,
+                loading: true
+            }
+        })
+        .addCase(user_signin.rejected, (state) => {
+            return {
+                ...state,
+                loading: false,
+                rejected: true
             }
         })
         .addCase(user_signup.fulfilled, (state, action) => {
             return {
                 ...state,
-                user: action.payload.user
+                user: action.payload.user,
+                loading: false
+            }
+        })
+        .addCase(user_signup.pending, (state) => {
+            return {
+                ...state,
+                loading: true
+            }
+        })
+        .addCase(user_signup.rejected, (state) => {
+            return {
+                ...state,
+                loading: false,
+                rejected: true
             }
         })
         .addCase(user_token, (state, action) => {
@@ -46,7 +76,15 @@ const userReducer = createReducer(
         .addCase(user_google_auth.fulfilled, (state, action) => {
             return {
                 ...state,
-                user: action.payload.user
+                user: action.payload.user,
+                rejected: action.payload.rejected,
+                loading: false
+            }
+        })
+        .addCase(user_google_auth.pending, (state) => {
+            return {
+                ...state,
+                loading: true
             }
         })
         .addCase(post_comment.fulfilled, (state, action) => {

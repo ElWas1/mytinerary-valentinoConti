@@ -195,7 +195,7 @@ const Main = () => {
                 </div>
                 <div className="drawer-side z-30">
                     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 min-h-full max-w-[90vw] bg-base-200 text-base-content">
+                    <ul className="menu p-4 w-80 min-h-full max-w-[90vw] bg-base-100 text-base-content">
                         <li className='btn-disabled bg-transparent'>
                             <div className="mb-2 flex items-center justify-center gap-4 p-4">
                                 <img src="/suitcase.webp" alt="brand" className="h-8 w-8" />

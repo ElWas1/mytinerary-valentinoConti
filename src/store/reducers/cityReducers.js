@@ -22,7 +22,7 @@ const cityReducer = createReducer(initialState,
                 loading: false
             }
         })
-        .addCase(get_cities.rejected, (state, action) => {
+        .addCase(get_cities.rejected, (state) => {
             return {
                 ...state,
                 loading: false

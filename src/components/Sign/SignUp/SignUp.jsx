@@ -29,7 +29,7 @@ const SignUp = () => {
     dispatch(get_countries())
     setFormData({
       ...formData,
-      image: imageURL
+      image: (imageURL !== null) ? imageURL : import.meta.env.VITE_DEFAULT_PFP
     })
   }, [imageURL])
 
@@ -42,6 +42,7 @@ const SignUp = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    if (formData.country === "") formData.country = "Not specified"
     try {
       dispatch(user_signup({
         user: formData
@@ -54,15 +55,16 @@ const SignUp = () => {
 
   return (
     <div className="flex flex-col items-center gap-4 bg-transparent text-black max-lg:p-3 lg:p-8 max-lg:text-xs lg:text-3xl rounded-xl">
-      <h1 className='self-center text-white text-4xl mb-8'>Sign Up</h1>
-      <form className="flex flex-col gap-4 max-w-[90vw]" onSubmit={handleSignUp} action="">
-        <input className={inputClassName} autoComplete="off" placeholder="Name" onInput={handleInput} type="text" name='name' />
-        <input className={inputClassName} autoComplete="off" placeholder="Last name" onInput={handleInput} type="text" name='last_name' />
-        <input className={inputClassName} autoComplete="off" placeholder="Username" onInput={handleInput} type="text" name='username' />
-        <input className={inputClassName} autoComplete="off" placeholder="E-mail" onInput={handleInput} type="text" name='email' />
-        <input className={inputClassName} autoComplete="off" placeholder="Password" onInput={handleInput} type="password" name='password' />
+      <h1 className='self-center text-white text-4xl'>Sign Up</h1>
+      <form className="flex flex-col gap-3 max-w-[90vw]" onSubmit={handleSignUp} action="">
+        <p className="text-white text-sm">* Indicates a required field.</p>
+        <input className={inputClassName} autoComplete="off" placeholder="Name (2 - 30 characters) *" onInput={handleInput} type="text" name='name' />
+        <input className={inputClassName} autoComplete="off" placeholder="Last name (2 - 30 characters) *" onInput={handleInput} type="text" name='last_name' />
+        <input className={inputClassName} autoComplete="off" placeholder="Username (2 - 20 characters) *" onInput={handleInput} type="text" name='username' />
+        <input className={inputClassName} autoComplete="off" placeholder="E-mail *" onInput={handleInput} type="text" name='email' />
+        <input className={inputClassName} autoComplete="off" placeholder="Password (8 - 35 characters) *" onInput={handleInput} type="password" name='password' />
         <select autoComplete="off" className={inputClassName} onInput={handleInput} name="country" id="country">
-          <option value={null}>--- Select a country ---</option>
+          <option value={""}>--- Select a country ---</option>
           {countries.map((e, i) => <option key={[i]} value={e.name.common}>{e.name.common}</option>)}
         </select>
         <FileUploader />
