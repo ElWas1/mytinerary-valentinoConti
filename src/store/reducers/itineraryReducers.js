@@ -19,6 +19,18 @@ const itineraryReducer = createReducer(initialState,
                 itineraries: action.payload.itineraries
             }
         })
+        .addCase(get_itineraries.pending, (state, action) => {
+            return {
+                ...state,
+                itineraries: false
+            }
+        })
+        .addCase(get_itineraries.rejected, (state, action) => {
+            return {
+                ...state,
+                itineraries: null
+            }
+        })
         .addCase(get_itineraries_by_city_id.fulfilled, (state, action) => {
             return {
                 ...state,
