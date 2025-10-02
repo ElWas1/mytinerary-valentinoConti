@@ -1,6 +1,8 @@
-const Cards = ({ image, city, country, className }) => {
+import { Link as Anchor } from "react-router-dom"
+
+const Cards = ({ id, image, city, country, className }) => {
     return (
-        <a href="#" className="block">
+        <Anchor to={`/cities/${id}`} className="block">
             <img
                 alt={city}
                 src={image}
@@ -14,7 +16,7 @@ const Cards = ({ image, city, country, className }) => {
 
                 <p className="mt-0.5 opacity-50 sm:mt-0">{city}</p>
             </div>
-        </a>
+        </Anchor>
     )
 }
 
